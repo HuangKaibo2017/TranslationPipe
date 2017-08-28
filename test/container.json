@@ -1,0 +1,2532 @@
+{
+  'en': {
+    1: {
+      'AGI': {
+        'cn-zh': [
+          '通用人工智能'
+        ]
+      },
+      'AI': {
+        'cn-zh': [
+          '人工智能'
+        ]
+      },
+      'ASR': {
+        'cn-zh': [
+          '自动语音识别'
+        ]
+      },
+      'BP': {
+        'cn-zh': [
+          '反向传播'
+        ]
+      },
+      'BPTT': {
+        'cn-zh': [
+          '通过时间的反向传播'
+        ]
+      },
+      'BN': {
+        'cn-zh': [
+          '分批标准化'
+        ]
+      },
+      'Bi-LSTM': {
+        'cn-zh': [
+          '双向长短期记忆'
+        ]
+      },
+      'CPU': {
+        'cn-zh': [
+          '中央处理器'
+        ]
+      },
+      'CRF': {
+        'cn-zh': [
+          '条件随机域/场'
+        ]
+      },
+      'CA': {
+        'cn-zh': [
+          '会话代理'
+        ]
+      },
+      'CNN': {
+        'cn-zh': [
+          '卷积神经网络'
+        ]
+      },
+      'DBN': {
+        'cn-zh': [
+          '深度信念网络'
+        ]
+      },
+      'DCGAN': {
+        'cn-zh': [
+          '深度卷积生成对抗网络'
+        ]
+      },
+      'DNN': {
+        'cn-zh': [
+          '深度神经网络'
+        ]
+      },
+      'DQN': {
+        'cn-zh': [
+          '深度Q网络'
+        ]
+      },
+      'DNC': {
+        'cn-zh': [
+          '可微分神经计算机'
+        ]
+      },
+      'EM': {
+        'cn-zh': [
+          '期望最大化'
+        ]
+      },
+      'ELM': {
+        'cn-zh': [
+          '超限学习机'
+        ]
+      },
+      'FAIR': {
+        'cn-zh': [
+          'Facebook人工智能研究所'
+        ]
+      },
+      'GMM': {
+        'cn-zh': [
+          '高斯混合模型'
+        ]
+      },
+      'GAN': {
+        'cn-zh': [
+          '生成对抗网络'
+        ]
+      },
+      'GA': {
+        'cn-zh': [
+          '遗传算法'
+        ]
+      },
+      'GNMT': {
+        'cn-zh': [
+          '谷歌神经机器翻译'
+        ]
+      },
+      'GPU': {
+        'cn-zh': [
+          '图形处理单元/图形处理器'
+        ]
+      },
+      'HDM': {
+        'cn-zh': [
+          '隐动态模型'
+        ]
+      },
+      'HMM': {
+        'cn-zh': [
+          '隐马尔可夫模型'
+        ]
+      },
+      'ICA': {
+        'cn-zh': [
+          '独立成分分析'
+        ]
+      },
+      'ICML': {
+        'cn-zh': [
+          '国际机器学习大会'
+        ]
+      },
+      'JSD': {
+        'cn-zh': [
+          'JS距离'
+        ]
+      },
+      'K-NN': {
+        'cn-zh': [
+          'K-最近邻算法'
+        ]
+      },
+      'KB': {
+        'cn-zh': [
+          '知识库'
+        ]
+      },
+      'LSA': {
+        'cn-zh': [
+          '潜在语义分析'
+        ]
+      },
+      'LSTM': {
+        'cn-zh': [
+          '长短期记忆'
+        ]
+      },
+      'MT': {
+        'cn-zh': [
+          '机器翻译'
+        ]
+      },
+      'MLP': {
+        'cn-zh': [
+          '多层感知器',
+          '多层感知器'
+        ]
+      },
+      'NLG': {
+        'cn-zh': [
+          '自然语言生成'
+        ]
+      },
+      'NLP': {
+        'cn-zh': [
+          '自然语言处理'
+        ]
+      },
+      'NLL': {
+        'cn-zh': [
+          '负对数似然'
+        ]
+      },
+      'NMT': {
+        'cn-zh': [
+          '神经机器翻译'
+        ]
+      },
+      'NTM': {
+        'cn-zh': [
+          '神经图灵机'
+        ]
+      },
+      'NCE': {
+        'cn-zh': [
+          '噪音对比估计'
+        ]
+      },
+      'PSO': {
+        'cn-zh': [
+          '粒子群优化算法'
+        ]
+      },
+      'PPGN': {
+        'cn-zh': [
+          '即插即用生成网络'
+        ]
+      },
+      'PCA': {
+        'cn-zh': [
+          '主成分分析'
+        ]
+      },
+      'QNN': {
+        'cn-zh': [
+          '量子化神经网络'
+        ]
+      },
+      'RBF': {
+        'cn-zh': [
+          '径向基函数'
+        ]
+      },
+      'ReLU': {
+        'cn-zh': [
+          '线性修正单元/线性修正函数'
+        ]
+      },
+      'RNN': {
+        'cn-zh': [
+          '循环神经网络'
+        ]
+      },
+      'RBM': {
+        'cn-zh': [
+          '受限玻尔兹曼机'
+        ]
+      },
+      'RE': {
+        'cn-zh': [
+          '规则引擎'
+        ]
+      },
+      'SOM': {
+        'cn-zh': [
+          '自组织映射'
+        ]
+      },
+      'SLAM': {
+        'cn-zh': [
+          '同步定位与地图构建'
+        ]
+      },
+      'SVD': {
+        'cn-zh': [
+          '奇异值分解'
+        ]
+      },
+      'SGD': {
+        'cn-zh': [
+          '随机梯度下降'
+        ]
+      },
+      'SVM': {
+        'cn-zh': [
+          '支持向量机'
+        ]
+      },
+      't-SNE': {
+        'cn-zh': [
+          'T-分布随机近邻嵌入'
+        ]
+      },
+      'TPU': {
+        'cn-zh': [
+          '张量处理单元'
+        ]
+      },
+      'VC Theory': {
+        'cn-zh': [
+          '万普尼克-泽范兰杰斯理论'
+        ]
+      },
+      'W': {
+        'cn-zh': [
+          '权重'
+        ]
+      },
+      'WSD': {
+        'cn-zh': [
+          '词义消歧'
+        ]
+      },
+      'ZSL': {
+        'cn-zh': [
+          '零次学习'
+        ]
+      }
+    },
+    2: {
+      'accuracy': {
+        'cn-zh': [
+          '精度'
+        ]
+      },
+      'Activation Function': {
+        'cn-zh': [
+          '激活函数'
+        ]
+      },
+      'Adversarial Networks': {
+        'cn-zh': [
+          '对抗网络'
+        ]
+      },
+      'Affine Layer': {
+        'cn-zh': [
+          '仿射层'
+        ]
+      },
+      'agent': {
+        'cn-zh': [
+          '代理/智能体'
+        ]
+      },
+      'algorithm': {
+        'cn-zh': [
+          '算法'
+        ]
+      },
+      'alpha-beta pruning': {
+        'cn-zh': [
+          'α-β剪枝'
+        ]
+      },
+      'anomaly detection': {
+        'cn-zh': [
+          '异常检测'
+        ]
+      },
+      'approximation': {
+        'cn-zh': [
+          '近似'
+        ]
+      },
+      'Artificial General Intelligence': {
+        'cn-zh': [
+          '通用人工智能'
+        ]
+      },
+      'Artificial Intelligence': {
+        'cn-zh': [
+          '人工智能'
+        ]
+      },
+      'association analysis': {
+        'cn-zh': [
+          '关联分析'
+        ]
+      },
+      'attention mechanism': {
+        'cn-zh': [
+          '注意机制'
+        ]
+      },
+      'attribute': {
+        'cn-zh': [
+          '描述属性'
+        ]
+      },
+      'attribute space': {
+        'cn-zh': [
+          '属性空间'
+        ]
+      },
+      'autoencoder': {
+        'cn-zh': [
+          '自编码器'
+        ]
+      },
+      'automatic speech recognition': {
+        'cn-zh': [
+          '自动语音识别'
+        ]
+      },
+      'automatic summarization': {
+        'cn-zh': [
+          '自动摘要'
+        ]
+      },
+      'average gradient': {
+        'cn-zh': [
+          '平均梯度'
+        ]
+      },
+      'Average-Pooling': {
+        'cn-zh': [
+          '平均池化'
+        ]
+      },
+      'backpropagation': {
+        'cn-zh': [
+          '反向传播'
+        ]
+      },
+      'Backpropagation Through Time': {
+        'cn-zh': [
+          '通过时间的反向传播'
+        ]
+      },
+      'Batch Normalization': {
+        'cn-zh': [
+          '分批标准化'
+        ]
+      },
+      'Bayesian classification': {
+        'cn-zh': [
+          '贝叶斯分类器'
+        ]
+      },
+      'Bayesian network': {
+        'cn-zh': [
+          '贝叶斯网络'
+        ]
+      },
+      'bias': {
+        'cn-zh': [
+          '偏置/偏差'
+        ]
+      },
+      'Bias-Variance Dilemma': {
+        'cn-zh': [
+          '偏差/方差困境'
+        ]
+      },
+      'Bi-directional Long-Short Term Memory': {
+        'cn-zh': [
+          '双向长短期记忆'
+        ]
+      },
+      'big data': {
+        'cn-zh': [
+          '大数据'
+        ]
+      },
+      'Boltzmann machine': {
+        'cn-zh': [
+          '玻尔兹曼机'
+        ]
+      },
+      'Central Processing Unit': {
+        'cn-zh': [
+          '中央处理器'
+        ]
+      },
+      'chunk': {
+        'cn-zh': [
+          '词块'
+        ]
+      },
+      'classification': {
+        'cn-zh': [
+          '分类'
+        ]
+      },
+      'cluster analysis': {
+        'cn-zh': [
+          '聚类分析'
+        ]
+      },
+      'clustering': {
+        'cn-zh': [
+          '聚类'
+        ]
+      },
+      'co-adapting': {
+        'cn-zh': [
+          '共适应'
+        ]
+      },
+      'Computation Cost': {
+        'cn-zh': [
+          '计算成本'
+        ]
+      },
+      'Computational Linguistics': {
+        'cn-zh': [
+          '计算语言学'
+        ]
+      },
+      'computer vision': {
+        'cn-zh': [
+          '计算机视觉'
+        ]
+      },
+      'concept drift': {
+        'cn-zh': [
+          '概念漂移'
+        ]
+      },
+      'conditional random field': {
+        'cn-zh': [
+          '条件随机域/场'
+        ]
+      },
+      'convergence': {
+        'cn-zh': [
+          '收敛'
+        ]
+      },
+      'conversational agent': {
+        'cn-zh': [
+          '会话代理'
+        ]
+      },
+      'convexity': {
+        'cn-zh': [
+          '凸性'
+        ]
+      },
+      'convolutional neural network': {
+        'cn-zh': [
+          '卷积神经网络'
+        ]
+      },
+      'co-occurrence': {
+        'cn-zh': [
+          '共现'
+        ]
+      },
+      'Cost Function': {
+        'cn-zh': [
+          '成本函数'
+        ]
+      },
+      'cross entropy': {
+        'cn-zh': [
+          '交叉熵'
+        ]
+      },
+      'cross validation': {
+        'cn-zh': [
+          '交叉验证法'
+        ]
+      },
+      'dataset': {
+        'cn-zh': [
+          '数据集'
+        ]
+      },
+      'Decision Boundary': {
+        'cn-zh': [
+          '决策边界'
+        ]
+      },
+      'Decision Trees': {
+        'cn-zh': [
+          '决策树'
+        ]
+      },
+      'Deep Belief Network': {
+        'cn-zh': [
+          '深度信念网络'
+        ]
+      },
+      'Deep Convolutional Generative Adversarial Network': {
+        'cn-zh': [
+          '深度卷积生成对抗网络'
+        ]
+      },
+      'deep learning': {
+        'cn-zh': [
+          '深度学习'
+        ]
+      },
+      'deep neural network': {
+        'cn-zh': [
+          '深度神经网络'
+        ]
+      },
+      'Deep Q-Learning': {
+        'cn-zh': [
+          '深度Q学习'
+        ]
+      },
+      'Deep Q-Network': {
+        'cn-zh': [
+          '深度Q网络'
+        ]
+      },
+      'differentiable neural computer': {
+        'cn-zh': [
+          '可微分神经计算机'
+        ]
+      },
+      'dimensionality': {
+        'cn-zh': [
+          '向量的维度'
+        ]
+      },
+      'dimensionality reduction algorithm': {
+        'cn-zh': [
+          '降维算法'
+        ]
+      },
+      'discriminative model': {
+        'cn-zh': [
+          '判别模型'
+        ]
+      },
+      'discriminator': {
+        'cn-zh': [
+          '判别器'
+        ]
+      },
+      'divergence': {
+        'cn-zh': [
+          '散度'
+        ]
+      },
+      'domain adaption': {
+        'cn-zh': [
+          '领域自适应'
+        ]
+      },
+      'Dynamic Fusion': {
+        'cn-zh': [
+          '动态融合'
+        ]
+      },
+      'Embedding': {
+        'cn-zh': [
+          '嵌入'
+        ]
+      },
+      'emotional analysis': {
+        'cn-zh': [
+          '情绪分析'
+        ]
+      },
+      'End-to-End': {
+        'cn-zh': [
+          '端到端'
+        ]
+      },
+      'error rate': {
+        'cn-zh': [
+          '错误率'
+        ]
+      },
+      'Expectation-Maximization': {
+        'cn-zh': [
+          '期望最大化'
+        ]
+      },
+      'Exploding Gradient Problem': {
+        'cn-zh': [
+          '梯度爆炸问题'
+        ]
+      },
+      'Extreme Learning Machine': {
+        'cn-zh': [
+          '超限学习机'
+        ]
+      },
+      'Facebook Artificial Intelligence Research': {
+        'cn-zh': [
+          'Facebook人工智能研究所'
+        ]
+      },
+      'factorization': {
+        'cn-zh': [
+          '因子分解'
+        ]
+      },
+      'feature': {
+        'cn-zh': [
+          '描述属性'
+        ]
+      },
+      'feature engineering': {
+        'cn-zh': [
+          '特征工程'
+        ]
+      },
+      'feature vector': {
+        'cn-zh': [
+          '特征向量'
+        ]
+      },
+      'Featured Learning': {
+        'cn-zh': [
+          '特征学习'
+        ]
+      },
+      'Feedforward Neural Networks': {
+        'cn-zh': [
+          '前馈神经网络'
+        ]
+      },
+      'game theory': {
+        'cn-zh': [
+          '博弈论'
+        ]
+      },
+      'Gaussian Mixture Model': {
+        'cn-zh': [
+          '高斯混合模型'
+        ]
+      },
+      'Generalization': {
+        'cn-zh': [
+          '泛化'
+        ]
+      },
+      'generalization error': {
+        'cn-zh': [
+          '泛化误差（新样本/测试集上的误差）'
+        ]
+      },
+      'Generative Adversarial Networks': {
+        'cn-zh': [
+          '生成对抗网络'
+        ]
+      },
+      'Generative Model': {
+        'cn-zh': [
+          '生成模型'
+        ]
+      },
+      'Generator': {
+        'cn-zh': [
+          '生成器'
+        ]
+      },
+      'Genetic Algorithm': {
+        'cn-zh': [
+          '遗传算法'
+        ]
+      },
+      'Global Optimization': {
+        'cn-zh': [
+          '全局优化'
+        ]
+      },
+      'Google Neural Machine Translation': {
+        'cn-zh': [
+          '谷歌神经机器翻译'
+        ]
+      },
+      'Gradient Descent': {
+        'cn-zh': [
+          '梯度下降'
+        ]
+      },
+      'graph theory': {
+        'cn-zh': [
+          '图论'
+        ]
+      },
+      'graphics processing unit': {
+        'cn-zh': [
+          '图形处理单元/图形处理器'
+        ]
+      },
+      'hidden dynamic model': {
+        'cn-zh': [
+          '隐动态模型'
+        ]
+      },
+      'hidden layer': {
+        'cn-zh': [
+          '隐藏层'
+        ]
+      },
+      'Hidden Markov Model': {
+        'cn-zh': [
+          '隐马尔可夫模型'
+        ]
+      },
+      'hybrid computing': {
+        'cn-zh': [
+          '混合计算'
+        ]
+      },
+      'hyperparameter': {
+        'cn-zh': [
+          '超参数'
+        ]
+      },
+      'Independent Component Analysis': {
+        'cn-zh': [
+          '独立成分分析'
+        ]
+      },
+      'input': {
+        'cn-zh': [
+          '输入'
+        ]
+      },
+      'instance': {
+        'cn-zh': [
+          '一个采样'
+        ]
+      },
+      'International Conference for Machine Learning': {
+        'cn-zh': [
+          '国际机器学习大会'
+        ]
+      },
+      'Jensen-Shannon Divergence': {
+        'cn-zh': [
+          'JS距离'
+        ]
+      },
+      'K-Means Clustering': {
+        'cn-zh': [
+          'K-均值聚类'
+        ]
+      },
+      'k-nearest neighbor （kNN）': {
+        'cn-zh': [
+          'k近邻学习'
+        ]
+      },
+      'K-Nearest Neighbours Algorithm': {
+        'cn-zh': [
+          'K-最近邻算法'
+        ]
+      },
+      'knowledge base': {
+        'cn-zh': [
+          '知识库'
+        ]
+      },
+      'Knowledge Representation': {
+        'cn-zh': [
+          '知识表征'
+        ]
+      },
+      'language phenomena': {
+        'cn-zh': [
+          '语言现象'
+        ]
+      },
+      'latent dirichlet allocation': {
+        'cn-zh': [
+          '隐含狄利克雷分布'
+        ]
+      },
+      'Latent Dirichlet Allocation': {
+        'cn-zh': [
+          '隐狄利克雷分布'
+        ]
+      },
+      'latent semantic analysis': {
+        'cn-zh': [
+          '潜在语义分析'
+        ]
+      },
+      'learner': {
+        'cn-zh': [
+          '学习器'
+        ]
+      },
+      'learning': {
+        'cn-zh': [
+          '学习，训练'
+        ]
+      },
+      'Linear Regression': {
+        'cn-zh': [
+          '线性回归'
+        ]
+      },
+      'log likelihood': {
+        'cn-zh': [
+          '对数似然'
+        ]
+      },
+      'Logistic Regression': {
+        'cn-zh': [
+          'Logistic回归'
+        ]
+      },
+      'Long-Short Term Memory': {
+        'cn-zh': [
+          '长短期记忆'
+        ]
+      },
+      'loss': {
+        'cn-zh': [
+          '损失'
+        ]
+      },
+      'machine translation': {
+        'cn-zh': [
+          '机器翻译'
+        ]
+      },
+      'Maximum Likelihood': {
+        'cn-zh': [
+          '最大似然'
+        ]
+      },
+      'Max-Pooling': {
+        'cn-zh': [
+          '最大池化'
+        ]
+      },
+      'minimax game': {
+        'cn-zh': [
+          '最小最大博弈'
+        ]
+      },
+      'Momentum': {
+        'cn-zh': [
+          '动量'
+        ]
+      },
+      'multi layered perceptron': {
+        'cn-zh': [
+          '多层感知器'
+        ]
+      },
+      'multi-document summarization': {
+        'cn-zh': [
+          '多文档摘要'
+        ]
+      },
+      'Multilayer Perceptron': {
+        'cn-zh': [
+          '多层感知机',
+          '多层感知器'
+        ]
+      },
+      'multimodal learning': {
+        'cn-zh': [
+          '多模态学习'
+        ]
+      },
+      'multiple linear regression': {
+        'cn-zh': [
+          '多元线性回归'
+        ]
+      },
+      'Na?ve Bayesian classification': {
+        'cn-zh': [
+          '朴素贝叶斯分类器'
+        ]
+      },
+      'Naive Bayes Classifier': {
+        'cn-zh': [
+          '朴素贝叶斯分类器'
+        ]
+      },
+      'named entity recognition': {
+        'cn-zh': [
+          '命名实体识别'
+        ]
+      },
+      'Nash equilibrium': {
+        'cn-zh': [
+          '纳什均衡'
+        ]
+      },
+      'natural language generation': {
+        'cn-zh': [
+          '自然语言生成'
+        ]
+      },
+      'natural language processing': {
+        'cn-zh': [
+          '自然语言处理'
+        ]
+      },
+      'Negative Log Likelihood': {
+        'cn-zh': [
+          '负对数似然'
+        ]
+      },
+      'Neural Machine Translation': {
+        'cn-zh': [
+          '神经机器翻译'
+        ]
+      },
+      'neural networks': {
+        'cn-zh': [
+          '神经网络'
+        ]
+      },
+      'Neural Turing Machine': {
+        'cn-zh': [
+          '神经图灵机'
+        ]
+      },
+      'noise-contrastive estimation': {
+        'cn-zh': [
+          '噪音对比估计'
+        ]
+      },
+      'non-convex optimization': {
+        'cn-zh': [
+          '非凸优化'
+        ]
+      },
+      'non-negative matrix factorization': {
+        'cn-zh': [
+          '非负矩阵分解'
+        ]
+      },
+      'Non-Saturating Game': {
+        'cn-zh': [
+          '非饱和博弈'
+        ]
+      },
+      'objective function': {
+        'cn-zh': [
+          '目标函数'
+        ]
+      },
+      'Off-Policy': {
+        'cn-zh': [
+          '离策略'
+        ]
+      },
+      'one shot learning': {
+        'cn-zh': [
+          '一次性学习'
+        ]
+      },
+      'On-Policy': {
+        'cn-zh': [
+          '在策略'
+        ]
+      },
+      'output': {
+        'cn-zh': [
+          '输出'
+        ]
+      },
+      'overfitting': {
+        'cn-zh': [
+          '过拟合'
+        ]
+      },
+      'Parameter': {
+        'cn-zh': [
+          '参数'
+        ]
+      },
+      'parse tree': {
+        'cn-zh': [
+          '解析树'
+        ]
+      },
+      'Particle Swarm Optimization': {
+        'cn-zh': [
+          '粒子群优化算法'
+        ]
+      },
+      'part-of-speech tagging': {
+        'cn-zh': [
+          '词性标注'
+        ]
+      },
+      'perceptron': {
+        'cn-zh': [
+          '感知器'
+        ]
+      },
+      'Plug and Play Generative Network': {
+        'cn-zh': [
+          '即插即用生成网络'
+        ]
+      },
+      'polarity detection': {
+        'cn-zh': [
+          '极性检测'
+        ]
+      },
+      'pooling': {
+        'cn-zh': [
+          '池化'
+        ]
+      },
+      'precision': {
+        'cn-zh': [
+          '查准率（预测结果是正样本的准确率）'
+        ]
+      },
+      'principal component analysis': {
+        'cn-zh': [
+          '主成分分析'
+        ]
+      },
+      'Probability Graphical Model': {
+        'cn-zh': [
+          '概率图模型'
+        ]
+      },
+      'Quantized Neural Network': {
+        'cn-zh': [
+          '量子化神经网络'
+        ]
+      },
+      'quantum computer': {
+        'cn-zh': [
+          '量子计算机'
+        ]
+      },
+      'Quantum Computing': {
+        'cn-zh': [
+          '量子计算'
+        ]
+      },
+      'Radial Basis Function': {
+        'cn-zh': [
+          '径向基函数'
+        ]
+      },
+      'Random Forest Algorithm': {
+        'cn-zh': [
+          '随机森林算法'
+        ]
+      },
+      'recall': {
+        'cn-zh': [
+          '查全率（预测结果中正样本的数量占真实情况正样本的数量）'
+        ]
+      },
+      'Rectified Linear Unit': {
+        'cn-zh': [
+          '线性修正单元/线性修正函数'
+        ]
+      },
+      'Recurrent Neural Network': {
+        'cn-zh': [
+          '循环神经网络'
+        ]
+      },
+      'recursive neural network': {
+        'cn-zh': [
+          '递归神经网络'
+        ]
+      },
+      'regression': {
+        'cn-zh': [
+          '回归'
+        ]
+      },
+      'reinforcement learning': {
+        'cn-zh': [
+          '强化学习'
+        ]
+      },
+      'representation': {
+        'cn-zh': [
+          '表征'
+        ]
+      },
+      'representation learning': {
+        'cn-zh': [
+          '表征学习'
+        ]
+      },
+      'Residual Mapping': {
+        'cn-zh': [
+          '残差映射'
+        ]
+      },
+      'Residual Network': {
+        'cn-zh': [
+          '残差网络'
+        ]
+      },
+      'Restricted Boltzmann Machine': {
+        'cn-zh': [
+          '受限玻尔兹曼机'
+        ]
+      },
+      'Robot': {
+        'cn-zh': [
+          '机器人'
+        ]
+      },
+      'Robustness': {
+        'cn-zh': [
+          '稳健性'
+        ]
+      },
+      'Rule Engine': {
+        'cn-zh': [
+          '规则引擎'
+        ]
+      },
+      'saddle point': {
+        'cn-zh': [
+          '鞍点'
+        ]
+      },
+      'sample': {
+        'cn-zh': [
+          '一个采样'
+        ]
+      },
+      'sample space': {
+        'cn-zh': [
+          '样本空间'
+        ]
+      },
+      'self organised map': {
+        'cn-zh': [
+          '自组织映射'
+        ]
+      },
+      'Self-Driving': {
+        'cn-zh': [
+          '自动驾驶'
+        ]
+      },
+      'semi-supervised learning': {
+        'cn-zh': [
+          '半监督学习'
+        ]
+      },
+      'sentiment analysis': {
+        'cn-zh': [
+          '情感分析'
+        ]
+      },
+      'simultaneous localization and mapping': {
+        'cn-zh': [
+          '同步定位与地图构建'
+        ]
+      },
+      'Singular Value Decomposition': {
+        'cn-zh': [
+          '奇异值分解'
+        ]
+      },
+      'Spectral Clustering': {
+        'cn-zh': [
+          '谱聚类'
+        ]
+      },
+      'Speech Recognition': {
+        'cn-zh': [
+          '语音识别'
+        ]
+      },
+      'stochastic gradient descent': {
+        'cn-zh': [
+          '随机梯度下降'
+        ]
+      },
+      'supervised learning': {
+        'cn-zh': [
+          '监督学习'
+        ]
+      },
+      'Support Vector Machine': {
+        'cn-zh': [
+          '支持向量机'
+        ]
+      },
+      'Support Vector Machine（SVM）': {
+        'cn-zh': [
+          '支持向量机'
+        ]
+      },
+      'synset': {
+        'cn-zh': [
+          '同义词集'
+        ]
+      },
+      'T-Distribution Stochastic Neighbour Embedding': {
+        'cn-zh': [
+          'T-分布随机近邻嵌入'
+        ]
+      },
+      'tensor': {
+        'cn-zh': [
+          '张量'
+        ]
+      },
+      'Tensor Processing Units': {
+        'cn-zh': [
+          '张量处理单元'
+        ]
+      },
+      'testing': {
+        'cn-zh': [
+          '测试'
+        ]
+      },
+      'the least square method': {
+        'cn-zh': [
+          '最小二乘法'
+        ]
+      },
+      'Threshold': {
+        'cn-zh': [
+          '阙值'
+        ]
+      },
+      'Time Step': {
+        'cn-zh': [
+          '时间步骤'
+        ]
+      },
+      'tokenization': {
+        'cn-zh': [
+          '标记化'
+        ]
+      },
+      'training': {
+        'cn-zh': [
+          '学习，训练'
+        ]
+      },
+      'training error': {
+        'cn-zh': [
+          '训练误差（训练集上的误差）'
+        ]
+      },
+      'transfer learning': {
+        'cn-zh': [
+          '迁移学习'
+        ]
+      },
+      'treebank': {
+        'cn-zh': [
+          '树库'
+        ]
+      },
+      'Turing Machine': {
+        'cn-zh': [
+          '图灵机'
+        ]
+      },
+      'unsupervised learning': {
+        'cn-zh': [
+          '无监督学习'
+        ]
+      },
+      'Vanishing Gradient Problem': {
+        'cn-zh': [
+          '梯度消失问题'
+        ]
+      },
+      'Vapnik–Chervonenkis theory': {
+        'cn-zh': [
+          '万普尼克-泽范兰杰斯理论'
+        ]
+      },
+      'von Neumann architecture': {
+        'cn-zh': [
+          '冯·诺伊曼架构/结构'
+        ]
+      },
+      'weight': {
+        'cn-zh': [
+          '权重'
+        ]
+      },
+      'word embedding': {
+        'cn-zh': [
+          '词嵌入'
+        ]
+      },
+      'word sense disambiguation': {
+        'cn-zh': [
+          '词义消歧'
+        ]
+      },
+      'zero-data learning': {
+        'cn-zh': [
+          '零数据学习'
+        ]
+      },
+      'zero-shot learning': {
+        'cn-zh': [
+          '零次学习'
+        ]
+      }
+    }
+  },
+  'cn-zh': {
+    3: {
+      '精度': {
+        'en': [
+          'accuracy'
+        ]
+      },
+      '激活函数': {
+        'en': [
+          'Activation Function'
+        ]
+      },
+      '对抗网络': {
+        'en': [
+          'Adversarial Networks'
+        ]
+      },
+      '仿射层': {
+        'en': [
+          'Affine Layer'
+        ]
+      },
+      '代理/智能体': {
+        'en': [
+          'agent'
+        ]
+      },
+      '算法': {
+        'en': [
+          'algorithm'
+        ]
+      },
+      'α-β剪枝': {
+        'en': [
+          'alpha-beta pruning'
+        ]
+      },
+      '异常检测': {
+        'en': [
+          'anomaly detection'
+        ]
+      },
+      '近似': {
+        'en': [
+          'approximation'
+        ]
+      },
+      '通用人工智能': {
+        'en': [
+          'AGI',
+          'Artificial General Intelligence'
+        ]
+      },
+      '人工智能': {
+        'en': [
+          'AI',
+          'Artificial Intelligence'
+        ]
+      },
+      '关联分析': {
+        'en': [
+          'association analysis'
+        ]
+      },
+      '注意机制': {
+        'en': [
+          'attention mechanism'
+        ]
+      },
+      '描述属性': {
+        'en': [
+          'attribute',
+          'feature'
+        ]
+      },
+      '属性空间': {
+        'en': [
+          'attribute space'
+        ]
+      },
+      '自编码器': {
+        'en': [
+          'autoencoder'
+        ]
+      },
+      '自动语音识别': {
+        'en': [
+          'ASR',
+          'automatic speech recognition'
+        ]
+      },
+      '自动摘要': {
+        'en': [
+          'automatic summarization'
+        ]
+      },
+      '平均梯度': {
+        'en': [
+          'average gradient'
+        ]
+      },
+      '平均池化': {
+        'en': [
+          'Average-Pooling'
+        ]
+      },
+      '反向传播': {
+        'en': [
+          'BP',
+          'backpropagation'
+        ]
+      },
+      '通过时间的反向传播': {
+        'en': [
+          'BPTT',
+          'Backpropagation Through Time'
+        ]
+      },
+      '分批标准化': {
+        'en': [
+          'BN',
+          'Batch Normalization'
+        ]
+      },
+      '贝叶斯分类器': {
+        'en': [
+          'Bayesian classification'
+        ]
+      },
+      '贝叶斯网络': {
+        'en': [
+          'Bayesian network'
+        ]
+      },
+      '偏置/偏差': {
+        'en': [
+          'bias'
+        ]
+      },
+      '偏差/方差困境': {
+        'en': [
+          'Bias-Variance Dilemma'
+        ]
+      },
+      '双向长短期记忆': {
+        'en': [
+          'Bi-LSTM',
+          'Bi-directional Long-Short Term Memory'
+        ]
+      },
+      '大数据': {
+        'en': [
+          'big data'
+        ]
+      },
+      '玻尔兹曼机': {
+        'en': [
+          'Boltzmann machine'
+        ]
+      },
+      '中央处理器': {
+        'en': [
+          'CPU',
+          'Central Processing Unit'
+        ]
+      },
+      '词块': {
+        'en': [
+          'chunk'
+        ]
+      },
+      '分类': {
+        'en': [
+          'classification'
+        ]
+      },
+      '聚类分析': {
+        'en': [
+          'cluster analysis'
+        ]
+      },
+      '聚类': {
+        'en': [
+          'clustering'
+        ]
+      },
+      '共适应': {
+        'en': [
+          'co-adapting'
+        ]
+      },
+      '计算成本': {
+        'en': [
+          'Computation Cost'
+        ]
+      },
+      '计算语言学': {
+        'en': [
+          'Computational Linguistics'
+        ]
+      },
+      '计算机视觉': {
+        'en': [
+          'computer vision'
+        ]
+      },
+      '概念漂移': {
+        'en': [
+          'concept drift'
+        ]
+      },
+      '条件随机域/场': {
+        'en': [
+          'CRF',
+          'conditional random field'
+        ]
+      },
+      '收敛': {
+        'en': [
+          'convergence'
+        ]
+      },
+      '会话代理': {
+        'en': [
+          'CA',
+          'conversational agent'
+        ]
+      },
+      '凸性': {
+        'en': [
+          'convexity'
+        ]
+      },
+      '卷积神经网络': {
+        'en': [
+          'CNN',
+          'convolutional neural network'
+        ]
+      },
+      '共现': {
+        'en': [
+          'co-occurrence'
+        ]
+      },
+      '成本函数': {
+        'en': [
+          'Cost Function'
+        ]
+      },
+      '交叉熵': {
+        'en': [
+          'cross entropy'
+        ]
+      },
+      '交叉验证法': {
+        'en': [
+          'cross validation'
+        ]
+      },
+      '数据集': {
+        'en': [
+          'dataset'
+        ]
+      },
+      '决策边界': {
+        'en': [
+          'Decision Boundary'
+        ]
+      },
+      '决策树': {
+        'en': [
+          'Decision Trees'
+        ]
+      },
+      '深度信念网络': {
+        'en': [
+          'DBN',
+          'Deep Belief Network'
+        ]
+      },
+      '深度卷积生成对抗网络': {
+        'en': [
+          'DCGAN',
+          'Deep Convolutional Generative Adversarial Network'
+        ]
+      },
+      '深度学习': {
+        'en': [
+          'deep learning'
+        ]
+      },
+      '深度神经网络': {
+        'en': [
+          'DNN',
+          'deep neural network'
+        ]
+      },
+      '深度Q学习': {
+        'en': [
+          'Deep Q-Learning'
+        ]
+      },
+      '深度Q网络': {
+        'en': [
+          'DQN',
+          'Deep Q-Network'
+        ]
+      },
+      '可微分神经计算机': {
+        'en': [
+          'DNC',
+          'differentiable neural computer'
+        ]
+      },
+      '向量的维度': {
+        'en': [
+          'dimensionality'
+        ]
+      },
+      '降维算法': {
+        'en': [
+          'dimensionality reduction algorithm'
+        ]
+      },
+      '判别模型': {
+        'en': [
+          'discriminative model'
+        ]
+      },
+      '判别器': {
+        'en': [
+          'discriminator'
+        ]
+      },
+      '散度': {
+        'en': [
+          'divergence'
+        ]
+      },
+      '领域自适应': {
+        'en': [
+          'domain adaption'
+        ]
+      },
+      '动态融合': {
+        'en': [
+          'Dynamic Fusion'
+        ]
+      },
+      '嵌入': {
+        'en': [
+          'Embedding'
+        ]
+      },
+      '情绪分析': {
+        'en': [
+          'emotional analysis'
+        ]
+      },
+      '端到端': {
+        'en': [
+          'End-to-End'
+        ]
+      },
+      '错误率': {
+        'en': [
+          'error rate'
+        ]
+      },
+      '期望最大化': {
+        'en': [
+          'EM',
+          'Expectation-Maximization'
+        ]
+      },
+      '梯度爆炸问题': {
+        'en': [
+          'Exploding Gradient Problem'
+        ]
+      },
+      '超限学习机': {
+        'en': [
+          'ELM',
+          'Extreme Learning Machine'
+        ]
+      },
+      'Facebook人工智能研究所': {
+        'en': [
+          'FAIR',
+          'Facebook Artificial Intelligence Research'
+        ]
+      },
+      '因子分解': {
+        'en': [
+          'factorization'
+        ]
+      },
+      '特征工程': {
+        'en': [
+          'feature engineering'
+        ]
+      },
+      '特征向量': {
+        'en': [
+          'feature vector'
+        ]
+      },
+      '特征学习': {
+        'en': [
+          'Featured Learning'
+        ]
+      },
+      '前馈神经网络': {
+        'en': [
+          'Feedforward Neural Networks'
+        ]
+      },
+      '博弈论': {
+        'en': [
+          'game theory'
+        ]
+      },
+      '高斯混合模型': {
+        'en': [
+          'GMM',
+          'Gaussian Mixture Model'
+        ]
+      },
+      '泛化': {
+        'en': [
+          'Generalization'
+        ]
+      },
+      '泛化误差（新样本/测试集上的误差）': {
+        'en': [
+          'generalization error'
+        ]
+      },
+      '生成对抗网络': {
+        'en': [
+          'GAN',
+          'Generative Adversarial Networks'
+        ]
+      },
+      '生成模型': {
+        'en': [
+          'Generative Model'
+        ]
+      },
+      '生成器': {
+        'en': [
+          'Generator'
+        ]
+      },
+      '遗传算法': {
+        'en': [
+          'GA',
+          'Genetic Algorithm'
+        ]
+      },
+      '全局优化': {
+        'en': [
+          'Global Optimization'
+        ]
+      },
+      '谷歌神经机器翻译': {
+        'en': [
+          'GNMT',
+          'Google Neural Machine Translation'
+        ]
+      },
+      '梯度下降': {
+        'en': [
+          'Gradient Descent'
+        ]
+      },
+      '图论': {
+        'en': [
+          'graph theory'
+        ]
+      },
+      '图形处理单元/图形处理器': {
+        'en': [
+          'GPU',
+          'graphics processing unit'
+        ]
+      },
+      '隐动态模型': {
+        'en': [
+          'HDM',
+          'hidden dynamic model'
+        ]
+      },
+      '隐藏层': {
+        'en': [
+          'hidden layer'
+        ]
+      },
+      '隐马尔可夫模型': {
+        'en': [
+          'HMM',
+          'Hidden Markov Model'
+        ]
+      },
+      '混合计算': {
+        'en': [
+          'hybrid computing'
+        ]
+      },
+      '超参数': {
+        'en': [
+          'hyperparameter'
+        ]
+      },
+      '独立成分分析': {
+        'en': [
+          'ICA',
+          'Independent Component Analysis'
+        ]
+      },
+      '输入': {
+        'en': [
+          'input'
+        ]
+      },
+      '一个采样': {
+        'en': [
+          'instance',
+          'sample'
+        ]
+      },
+      '国际机器学习大会': {
+        'en': [
+          'ICML',
+          'International Conference for Machine Learning'
+        ]
+      },
+      'JS距离': {
+        'en': [
+          'JSD',
+          'Jensen-Shannon Divergence'
+        ]
+      },
+      'K-均值聚类': {
+        'en': [
+          'K-Means Clustering'
+        ]
+      },
+      'k近邻学习': {
+        'en': [
+          'k-nearest neighbor （kNN）'
+        ]
+      },
+      'K-最近邻算法': {
+        'en': [
+          'K-NN',
+          'K-Nearest Neighbours Algorithm'
+        ]
+      },
+      '知识库': {
+        'en': [
+          'KB',
+          'knowledge base'
+        ]
+      },
+      '知识表征': {
+        'en': [
+          'Knowledge Representation'
+        ]
+      },
+      '语言现象': {
+        'en': [
+          'language phenomena'
+        ]
+      },
+      '隐含狄利克雷分布': {
+        'en': [
+          'latent dirichlet allocation'
+        ]
+      },
+      '隐狄利克雷分布': {
+        'en': [
+          'Latent Dirichlet Allocation'
+        ]
+      },
+      '潜在语义分析': {
+        'en': [
+          'LSA',
+          'latent semantic analysis'
+        ]
+      },
+      '学习器': {
+        'en': [
+          'learner'
+        ]
+      },
+      '学习，训练': {
+        'en': [
+          'learning',
+          'training'
+        ]
+      },
+      '线性回归': {
+        'en': [
+          'Linear Regression'
+        ]
+      },
+      '对数似然': {
+        'en': [
+          'log likelihood'
+        ]
+      },
+      'Logistic回归': {
+        'en': [
+          'Logistic Regression'
+        ]
+      },
+      '长短期记忆': {
+        'en': [
+          'LSTM',
+          'Long-Short Term Memory'
+        ]
+      },
+      '损失': {
+        'en': [
+          'loss'
+        ]
+      },
+      '机器翻译': {
+        'en': [
+          'MT',
+          'machine translation'
+        ]
+      },
+      '最大似然': {
+        'en': [
+          'Maximum Likelihood'
+        ]
+      },
+      '最大池化': {
+        'en': [
+          'Max-Pooling'
+        ]
+      },
+      '最小最大博弈': {
+        'en': [
+          'minimax game'
+        ]
+      },
+      '动量': {
+        'en': [
+          'Momentum'
+        ]
+      },
+      '多层感知器': {
+        'en': [
+          'MLP',
+          'multi layered perceptron',
+          'MLP',
+          'Multilayer Perceptron'
+        ]
+      },
+      '多文档摘要': {
+        'en': [
+          'multi-document summarization'
+        ]
+      },
+      '多层感知机': {
+        'en': [
+          'Multilayer Perceptron'
+        ]
+      },
+      '多模态学习': {
+        'en': [
+          'multimodal learning'
+        ]
+      },
+      '多元线性回归': {
+        'en': [
+          'multiple linear regression'
+        ]
+      },
+      '朴素贝叶斯分类器': {
+        'en': [
+          'Na?ve Bayesian classification',
+          'Naive Bayes Classifier'
+        ]
+      },
+      '命名实体识别': {
+        'en': [
+          'named entity recognition'
+        ]
+      },
+      '纳什均衡': {
+        'en': [
+          'Nash equilibrium'
+        ]
+      },
+      '自然语言生成': {
+        'en': [
+          'NLG',
+          'natural language generation'
+        ]
+      },
+      '自然语言处理': {
+        'en': [
+          'NLP',
+          'natural language processing'
+        ]
+      },
+      '负对数似然': {
+        'en': [
+          'NLL',
+          'Negative Log Likelihood'
+        ]
+      },
+      '神经机器翻译': {
+        'en': [
+          'NMT',
+          'Neural Machine Translation'
+        ]
+      },
+      '神经网络': {
+        'en': [
+          'neural networks'
+        ]
+      },
+      '神经图灵机': {
+        'en': [
+          'NTM',
+          'Neural Turing Machine'
+        ]
+      },
+      '噪音对比估计': {
+        'en': [
+          'NCE',
+          'noise-contrastive estimation'
+        ]
+      },
+      '非凸优化': {
+        'en': [
+          'non-convex optimization'
+        ]
+      },
+      '非负矩阵分解': {
+        'en': [
+          'non-negative matrix factorization'
+        ]
+      },
+      '非饱和博弈': {
+        'en': [
+          'Non-Saturating Game'
+        ]
+      },
+      '目标函数': {
+        'en': [
+          'objective function'
+        ]
+      },
+      '离策略': {
+        'en': [
+          'Off-Policy'
+        ]
+      },
+      '一次性学习': {
+        'en': [
+          'one shot learning'
+        ]
+      },
+      '在策略': {
+        'en': [
+          'On-Policy'
+        ]
+      },
+      '输出': {
+        'en': [
+          'output'
+        ]
+      },
+      '过拟合': {
+        'en': [
+          'overfitting'
+        ]
+      },
+      '参数': {
+        'en': [
+          'Parameter'
+        ]
+      },
+      '解析树': {
+        'en': [
+          'parse tree'
+        ]
+      },
+      '粒子群优化算法': {
+        'en': [
+          'PSO',
+          'Particle Swarm Optimization'
+        ]
+      },
+      '词性标注': {
+        'en': [
+          'part-of-speech tagging'
+        ]
+      },
+      '感知器': {
+        'en': [
+          'perceptron'
+        ]
+      },
+      '即插即用生成网络': {
+        'en': [
+          'PPGN',
+          'Plug and Play Generative Network'
+        ]
+      },
+      '极性检测': {
+        'en': [
+          'polarity detection'
+        ]
+      },
+      '池化': {
+        'en': [
+          'pooling'
+        ]
+      },
+      '查准率（预测结果是正样本的准确率）': {
+        'en': [
+          'precision'
+        ]
+      },
+      '主成分分析': {
+        'en': [
+          'PCA',
+          'principal component analysis'
+        ]
+      },
+      '概率图模型': {
+        'en': [
+          'Probability Graphical Model'
+        ]
+      },
+      '量子化神经网络': {
+        'en': [
+          'QNN',
+          'Quantized Neural Network'
+        ]
+      },
+      '量子计算机': {
+        'en': [
+          'quantum computer'
+        ]
+      },
+      '量子计算': {
+        'en': [
+          'Quantum Computing'
+        ]
+      },
+      '径向基函数': {
+        'en': [
+          'RBF',
+          'Radial Basis Function'
+        ]
+      },
+      '随机森林算法': {
+        'en': [
+          'Random Forest Algorithm'
+        ]
+      },
+      '查全率（预测结果中正样本的数量占真实情况正样本的数量）': {
+        'en': [
+          'recall'
+        ]
+      },
+      '线性修正单元/线性修正函数': {
+        'en': [
+          'ReLU',
+          'Rectified Linear Unit'
+        ]
+      },
+      '循环神经网络': {
+        'en': [
+          'RNN',
+          'Recurrent Neural Network'
+        ]
+      },
+      '递归神经网络': {
+        'en': [
+          'recursive neural network'
+        ]
+      },
+      '回归': {
+        'en': [
+          'regression'
+        ]
+      },
+      '强化学习': {
+        'en': [
+          'reinforcement learning'
+        ]
+      },
+      '表征': {
+        'en': [
+          'representation'
+        ]
+      },
+      '表征学习': {
+        'en': [
+          'representation learning'
+        ]
+      },
+      '残差映射': {
+        'en': [
+          'Residual Mapping'
+        ]
+      },
+      '残差网络': {
+        'en': [
+          'Residual Network'
+        ]
+      },
+      '受限玻尔兹曼机': {
+        'en': [
+          'RBM',
+          'Restricted Boltzmann Machine'
+        ]
+      },
+      '机器人': {
+        'en': [
+          'Robot'
+        ]
+      },
+      '稳健性': {
+        'en': [
+          'Robustness'
+        ]
+      },
+      '规则引擎': {
+        'en': [
+          'RE',
+          'Rule Engine'
+        ]
+      },
+      '鞍点': {
+        'en': [
+          'saddle point'
+        ]
+      },
+      '样本空间': {
+        'en': [
+          'sample space'
+        ]
+      },
+      '自组织映射': {
+        'en': [
+          'SOM',
+          'self organised map'
+        ]
+      },
+      '自动驾驶': {
+        'en': [
+          'Self-Driving'
+        ]
+      },
+      '半监督学习': {
+        'en': [
+          'semi-supervised learning'
+        ]
+      },
+      '情感分析': {
+        'en': [
+          'sentiment analysis'
+        ]
+      },
+      '同步定位与地图构建': {
+        'en': [
+          'SLAM',
+          'simultaneous localization and mapping'
+        ]
+      },
+      '奇异值分解': {
+        'en': [
+          'SVD',
+          'Singular Value Decomposition'
+        ]
+      },
+      '谱聚类': {
+        'en': [
+          'Spectral Clustering'
+        ]
+      },
+      '语音识别': {
+        'en': [
+          'Speech Recognition'
+        ]
+      },
+      '随机梯度下降': {
+        'en': [
+          'SGD',
+          'stochastic gradient descent'
+        ]
+      },
+      '监督学习': {
+        'en': [
+          'supervised learning'
+        ]
+      },
+      '支持向量机': {
+        'en': [
+          'SVM',
+          'Support Vector Machine',
+          'Support Vector Machine（SVM）'
+        ]
+      },
+      '同义词集': {
+        'en': [
+          'synset'
+        ]
+      },
+      'T-分布随机近邻嵌入': {
+        'en': [
+          't-SNE',
+          'T-Distribution Stochastic Neighbour Embedding'
+        ]
+      },
+      '张量': {
+        'en': [
+          'tensor'
+        ]
+      },
+      '张量处理单元': {
+        'en': [
+          'TPU',
+          'Tensor Processing Units'
+        ]
+      },
+      '测试': {
+        'en': [
+          'testing'
+        ]
+      },
+      '最小二乘法': {
+        'en': [
+          'the least square method'
+        ]
+      },
+      '阙值': {
+        'en': [
+          'Threshold'
+        ]
+      },
+      '时间步骤': {
+        'en': [
+          'Time Step'
+        ]
+      },
+      '标记化': {
+        'en': [
+          'tokenization'
+        ]
+      },
+      '训练误差（训练集上的误差）': {
+        'en': [
+          'training error'
+        ]
+      },
+      '迁移学习': {
+        'en': [
+          'transfer learning'
+        ]
+      },
+      '树库': {
+        'en': [
+          'treebank'
+        ]
+      },
+      '图灵机': {
+        'en': [
+          'Turing Machine'
+        ]
+      },
+      '无监督学习': {
+        'en': [
+          'unsupervised learning'
+        ]
+      },
+      '梯度消失问题': {
+        'en': [
+          'Vanishing Gradient Problem'
+        ]
+      },
+      '万普尼克-泽范兰杰斯理论': {
+        'en': [
+          'VC Theory',
+          'Vapnik–Chervonenkis theory'
+        ]
+      },
+      '冯·诺伊曼架构/结构': {
+        'en': [
+          'von Neumann architecture'
+        ]
+      },
+      '权重': {
+        'en': [
+          'W',
+          'weight'
+        ]
+      },
+      '词嵌入': {
+        'en': [
+          'word embedding'
+        ]
+      },
+      '词义消歧': {
+        'en': [
+          'WSD',
+          'word sense disambiguation'
+        ]
+      },
+      '零数据学习': {
+        'en': [
+          'zero-data learning'
+        ]
+      },
+      '零次学习': {
+        'en': [
+          'ZSL',
+          'zero-shot learning'
+        ]
+      }
+    }
+  }
+}
