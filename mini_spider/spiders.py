@@ -33,45 +33,47 @@ import os, logging
 from datetime import datetime
 import requests
 from pathlib import Path
-from tool import is_path_exists_or_creatable
+from tool import is_path_exists_or_creatable, get_valid_file_name
+import constant as c
 
 
 class Spider(object):
-    def __init__(self, links:dict, save_folder:str, *args, **kwargs):
-        self.name = "SpiderAgent"
-        self.urls = links
+    def __init__(self, save_folder:str, *args, **kwargs):
         self._save_folder = save_folder
-        self.finished = False
 
-    def parse(self, response:requests.Response):
+    def _parse(self, response:requests.Response):
         uri = Path(response.url).name
-        date_str = "{}{}.html".format(datetime.now().strftime("%Y%m%d%H%M%S%f"), uri)
-        if not is_path_exists_or_creatable(date_str):
-            raise ValueError('Path is not valid:"{}".'.format(date_str))
-        logging.info("date_str:%s", date_str)
-        file_name = os.path.join(self._save_folder, date_str)
+        file_name = "{}{}.html".format(datetime.now().strftime("%Y%m%d%H%M%S%f"), uri)
+        if not is_path_exists_or_creatable(file_name):
+            file_name = get_valid_file_name(file_name)
+            # raise ValueError('Path is not valid:"{}".'.format(file_name))
+        logging.info("date_str:%s", file_name)
+        file_name = os.path.join(self._save_folder, file_name)
         logging.info("**try to save file[%s]:%s.", response.encoding, file_name) # encoding: utf-8
         logging.info("**url:%s", response.url)  # request link
         with open(file_name, "wb+") as f:
             f.write(response.content)
             f.flush()
-        return file_name
+        return (file_name, response.encoding)
 
-    def start(self):
-        self.finished = False
-        for k, v in self.urls.items():
-            if 'download' in v and len(v['download']) > 0:
+    def start_single(self, uri, download):
+        before = datetime.now()
+        resp = requests.get(uri, headers={'user-agent': USER_AGENT})
+        after = datetime.now()
+        logging.info("responded with %s seconds.", after - before)
+        return self._parse(resp)
+
+    def start(self, links:dict):
+        for k, v in links.items():
+            logging.info("v:%s.%s", v, type(v[c.DOWNLOAD]))
+            if 'download' in v and len(v[c.DOWNLOAD]) > 0:
+                logging.info("**omitted. uri:'%s' is downloaded, '%s'.", k, v[c.DOWNLOAD])
                 continue
             logging.info("**Requesting '%s'.", k)
-            before = datetime.now()
-            resp = requests.get(k, headers={'user-agent': USER_AGENT})
-            after = datetime.now()
-            logging.info("response with %s seconds.", after-before)
-            file_name = self.parse(resp)
+            file_name, encoding = self.start_single(k, v[c.DOWNLOAD])
             logging.info("saved to '%s'", file_name)
-            self.urls[k]["download"] = file_name
-
-        self.finished = True
+            links[k][c.DOWNLOAD] = file_name
+            links[k][c.ENCODING] = encoding
 
 # Response Head.
 # {

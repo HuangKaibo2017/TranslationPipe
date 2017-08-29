@@ -32,10 +32,12 @@ sys.path.insert(0, "..")
 from interface.icontainer import IContainer
 import pandas as pd
 from copy import deepcopy
+from pathlib import Path
+import constant as c
 
 class StandardWord(IContainer):
 
-    def __init__(self, source:str, source_type:str, language_heads:dict):
+    def __init__(self, root:str, source_type:str):
         """
 
         :param source: source.
@@ -43,45 +45,71 @@ class StandardWord(IContainer):
         :param language_heads: for example: {'en':[1,2],'zh-cn':[3]}
         """
         super().__init__()
+        self._root = root
         self._dict = dict()
-        df:pd.DataFrame = None
-        if source_type == 'csv_file' or source_type == 'csv_str':
-            df = pd.read_csv(source)
-        elif source_type == 'xlsx_file':
-            df = pd.read_excel(source)
-        elif source_type == 'csv_str':
-            raise NotImplementedError("source_type '{}' is not supported.".format(source_type))
-        lang_keys = []
-        for i, k in language_heads.items():
-            lang_keys.append(i)
-            self._dict[i] = {}
-            for j in k:
-                self._dict[i][j] = {}
-        for row in df.itertuples(index=True):
-            for i, k in language_heads.items():
-                other_lang_keys = deepcopy(lang_keys)
-                other_lang_keys.remove(i)
-                for j in k:
-                    if pd.isnull(row[j]):
-                        continue
-                    for o in other_lang_keys:
-                        for l in language_heads[o]:
-                            if pd.isnull(row[l]):
+        self._cache = dict()
+        p = Path(self._root)
+        for i in p.glob("*.xlsx"):
+            if Path(i).name.startswith("~$"):
+                continue
+            try:
+                df: pd.DataFrame = None
+                if source_type == c.TYPE_FILE_CSV:
+                    df = pd.read_csv(i)
+                elif source_type == c.TYPE_FILE_XLSX:
+                    df = pd.read_excel(i)
+                else:
+                    raise NotImplementedError("source_type '{}' is not supported.".format(source_type))
+                lang_keys = []
+                index = 1
+                language_heads = {}
+                for i in df.keys():
+                    dot = i.find(".")
+                    k = str(i)[0:dot] if dot > 0 else i
+                    if k not in lang_keys:
+                        lang_keys.append(k)
+                    if k not in language_heads:
+                        language_heads[k] = [index]
+                    else:
+                        language_heads[k].append(index)
+                    if k not in self._dict:
+                        self._dict[k] = {}
+                        self._dict[k][index] = {}
+                    else:
+                        if index not in self._dict[k]:
+                            self._dict[k][index] = {}
+                    index += 1
+                for row in df.itertuples(index=True):
+                    for i, k in language_heads.items():
+                        other_lang_keys = deepcopy(lang_keys)
+                        other_lang_keys.remove(i)
+                        for j in k:
+                            if pd.isnull(row[j]):
                                 continue
-                            if j in self._dict[i]:
-                                if row[j] in self._dict[i][j]:
-                                    if o in self._dict[i][j][row[j]]:
-                                        self._dict[i][j][row[j]][o].append(row[l])
+                            for o in other_lang_keys:
+                                for l in language_heads[o]:
+                                    if pd.isnull(row[l]):
+                                        continue
+                                    if j in self._dict[i]:
+                                        if row[j] in self._dict[i][j]:
+                                            if o in self._dict[i][j][row[j]]:
+                                                self._dict[i][j][row[j]][o].append(row[l])
+                                            else:
+                                                self._dict[i][j][row[j]][o] = [row[l]]
+                                        else:
+                                            self._dict[i][j][row[j]] = {o: [row[l]]}
                                     else:
-                                        self._dict[i][j][row[j]][o] = [row[l]]
-                                else:
-                                    self._dict[i][j][row[j]]= {o:[row[l]]}
-                            else:
-                                self._dict[i] = {j:{row[j]: {o:[row[l]]}}}
-        self._language_heads = language_heads
+                                        self._dict[i] = {j: {row[j]: {o: [row[l]]}}}
+                self._language_heads = language_heads
+            except:
+                exc_type, exc_val, _ = sys.exc_info()
+                logging.error("err[{}]:{}".format(exc_type, exc_val, exc_info=True))
         logging.info(self._dict)
 
-    def get_keyword(self, src:str='en', dst:str='zh-cn'):
+    def get_word_pair(self, src:str= 'en', dst:str= 'zh-cn'):
+        key = "{}{}".format(src, dst)
+        if key in self._cache:
+            return self._cache[key]
         res = None
         if 'en' in self._dict:
             res = dict()
@@ -89,5 +117,6 @@ class StandardWord(IContainer):
                 res[k] = dict()
                 for k_i, v_i in v.items():
                     res[k][k_i] = v_i[dst]
+        self._cache[key] = res
         return res
 

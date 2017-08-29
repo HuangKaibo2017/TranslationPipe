@@ -27,8 +27,10 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
-import sys, os, errno
+import sys, os, errno, re
 from pathlib import Path
+from numbers import Number
+from pandas import isnull
 
 g_root = None
 
@@ -45,6 +47,23 @@ def get_root():
         g_root = Path(os.path.dirname(sys.executable)).resolve() if is_exe_mode() else Path(os.path.dirname(__file__)).parent.resolve()
     return g_root
 
+
+def get_val(val, default=u''):
+    if not val:  # if it is None, return default.
+        return default
+    elif isinstance(val, Number):
+        if isnull(val):
+            return default
+        return val
+    elif isinstance(val, str):
+        return val.strip()
+    else:
+        return val
+
+
+def get_valid_file_name(file_name:str):
+    p = re.compile(r"(\?|\=)")
+    return p.sub("", file_name)
 
 # Sadly, Python fails to provide the following magic number for us.
 ERROR_INVALID_NAME = 123
