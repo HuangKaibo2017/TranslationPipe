@@ -6,13 +6,15 @@ from pathlib import Path
 import os, re, logging
 # from collections import OrderedDict
 import constant as c
+from datetime import datetime
 
 class Standardizor(object):
     def __init__(self, std_path:str):
         self._std_path = std_path
 
     def parse_single(self, download, word_pair:dict):
-        replace = dict()
+        before = datetime.now()
+        std_words = dict()
         content: str = None
         with open(download, "r", encoding="utf-8") as f:
             content = f.read()
@@ -20,18 +22,23 @@ class Standardizor(object):
             for std_k, std_v in std_dict.items():
                 p = re.compile(r"[^\=\-\</\w]{1}" + std_k + r"[^\>\-\=\w]{1}", re.IGNORECASE)
                 for m in p.finditer(content):
-                    replace[m.start() + 1] = [std_k, std_v]
-        ordered_key = sorted(replace.keys())
+                    k_index = m.start() + 1
+                    if k_index not in std_words:
+                        std_words[k_index] = [std_k, std_v]
+        ordered_key = sorted(std_words.keys())
+        logging.info("ordered_key:%s.", ordered_key)
         std_f_name = os.path.join(self._std_path, str(Path(download).name))
         with open(std_f_name, "w+", encoding="utf-8") as s_f:
             start_i = 0
             for std_i in ordered_key:
-                std_k = replace[std_i]
+                std_k = std_words[std_i]
                 k_len = len(std_k[0])
                 s_f.write(content[start_i:std_i + k_len])
                 s_f.write("[翻译：{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
                 start_i = std_i + k_len
             s_f.flush()
+        after = datetime.now()
+        logging.info("Standardized with [%s]‘%s’.", after-before, std_f_name)
         return std_f_name
 
 

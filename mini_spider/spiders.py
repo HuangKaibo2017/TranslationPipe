@@ -60,7 +60,7 @@ class Spider(object):
         before = datetime.now()
         resp = requests.get(uri, headers={'user-agent': USER_AGENT})
         after = datetime.now()
-        logging.info("responded with %s seconds.", after - before)
+        logging.info("Downloaded with %s seconds.", after - before)
         return self._parse(resp)
 
     def start(self, links:dict):

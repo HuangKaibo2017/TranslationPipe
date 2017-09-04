@@ -12,7 +12,7 @@ from container.std_word import StandardWord
 from copy import deepcopy
 from datetime import datetime
 from mini_spider.spiders import Spider
-from translation.translations import Standardizor
+from translation.standardizors import Standardizor
 from requirement import Requirement
 import constant as c
 
