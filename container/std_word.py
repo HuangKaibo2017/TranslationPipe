@@ -48,12 +48,13 @@ class StandardWord(IContainer):
         self._root = root
         self._dict = dict()
         self._cache = dict()
+        self.ext_property = dict()
         p = Path(self._root)
         for i in p.glob("*.xlsx"):
             if Path(i).name.startswith("~$"):
                 continue
+            df: pd.DataFrame = None
             try:
-                df: pd.DataFrame = None
                 if source_type == c.TYPE_FILE_CSV:
                     df = pd.read_csv(i)
                 elif source_type == c.TYPE_FILE_XLSX:
@@ -65,7 +66,10 @@ class StandardWord(IContainer):
                 language_heads = {}
                 for i in df.keys():
                     dot = i.find(".")
-                    k = str(i)[0:dot] if dot > 0 else i
+                    # right now, only extend property is IGNORECASE.
+                    k, ext = (str(i)[0:dot], str(i)[dot+1:]) if dot > 0 else (i, "")
+                    if len(ext) > 0:
+                        self.ext_property[index] = ext
                     if k not in lang_keys:
                         lang_keys.append(k)
                     if k not in language_heads:
@@ -104,6 +108,9 @@ class StandardWord(IContainer):
             except:
                 exc_type, exc_val, _ = sys.exc_info()
                 logging.error("err[{}]:{}".format(exc_type, exc_val, exc_info=True))
+            finally:
+                if df is not None:
+                    del df
         logging.info(self._dict)
 
     def get_word_pair(self, src:str= 'en', dst:str= 'zh-cn'):

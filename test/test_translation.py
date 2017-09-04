@@ -58,8 +58,8 @@ class TestAlgorithm(unittest.TestCase):
     def test_standardized(self):
         file = {"https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/": {c.DOWNLOAD:r"C:\projects\personal\TranslationPipe\download\20170828115408438438.html", c.STANDARDIZED:""}}
         s_w = StandardWord(*self._csds_container)
-        tran = Standardizor(s_w, self._standardized_path)
-        tran.parse(file, 'en', 'zh-cn')
+        tran = Standardizor(self._standardized_path)
+        tran.parse(file, s_w)
         print(file)
 
     @unittest.skip("disable for debug")

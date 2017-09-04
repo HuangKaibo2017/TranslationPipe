@@ -98,7 +98,7 @@ if __name__ == "__main__":
                     download = path.join(folder_download, download)
                 if not standardized and len(standardized) < 1:
                     word_pair = std_word.get_word_pair(src_language, dst_language)
-                    standardized = std.parse_single(download, word_pair)
+                    standardized = std.parse_single(download, word_pair, std_word.ext_property)
                     df.set_value(index, 'standardized', path.basename(standardized))
                 index += 1
             # writer = pd.ExcelWriter(i)
