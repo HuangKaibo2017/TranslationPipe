@@ -82,30 +82,30 @@ if __name__ == "__main__":
             df: pd.DataFrame = pd.read_excel(i, na_values=[''],na_filter=False)
             index = 0
             for row in df.itertuples(index=True):
-                uri = get_val(row.uri, "")
-                if uri is None or len(uri) < 2:
-                    continue
-                src_language = get_val(row.src_language, "")
-                dst_language = get_val(row.dst_language, "")
-                download = get_val(row.download, "")
-                standardized = get_val(row.standardized, "")
-                encoding = get_val(row.encoding, "")
-                if not download and len(download) < 1:
-                    download, encoding = spider.start_single(row.uri, path.join(folder_download, download))
-                    df.set_value(index, 'download', path.basename(download))
-                    df.set_value(index, 'encoding', encoding)
-                else:
-                    download = path.join(folder_download, download)
-                if not standardized and len(standardized) < 1:
-                    word_pair = std_word.get_word_pair(src_language, dst_language)
-                    standardized = std.parse_single(download, word_pair, std_word.ext_property)
-                    df.set_value(index, 'standardized', path.basename(standardized))
+                try:
+                    uri = get_val(row.uri, "")
+                    if uri is None or len(uri) < 2:
+                        continue
+                    src_language = get_val(row.src_language, "")
+                    dst_language = get_val(row.dst_language, "")
+                    download = get_val(row.download, "")
+                    standardized = get_val(row.standardized, "")
+                    encoding = get_val(row.encoding, "")
+                    if not download and len(download) < 1:
+                        download, encoding = spider.start_single(row.uri, path.join(folder_download, download))
+                        df.set_value(index, 'download', path.basename(download))
+                        df.set_value(index, 'encoding', encoding)
+                    else:
+                        download = path.join(folder_download, download)
+                    if not standardized and len(standardized) < 1:
+                        word_pair = std_word.get_word_pair(src_language, dst_language)
+                        standardized = std.parse_single(download, word_pair, std_word.ext_property)
+                        df.set_value(index, 'standardized', path.basename(standardized))
+                except:
+                    exc_type, exc_val, _ = sys.exc_info()
+                    logging.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
                 index += 1
-            # writer = pd.ExcelWriter(i)
-            # df.to_excel(writer)
-            # writer.save()
 
-            # archive = ZipFile(f, 'w', ZIP_DEFLATED, allowZip64=True)
             save_i = path.join(folder_temp, path.basename(i))
             if path.exists(save_i):
                 os.remove(save_i)

@@ -29,7 +29,7 @@ class Standardizor(object):
                     if k_index not in std_words:
                         std_words[k_index] = [std_k, std_v]
         ordered_key = sorted(std_words.keys())
-        logging.info("ordered_key:%s.", ordered_key)
+        # logging.info("ordered_key:%s.", ordered_key)
         std_f_name = os.path.join(self._std_path, str(Path(download).name))
         with open(std_f_name, "w+", encoding="utf-8") as s_f:
             start_i = 0

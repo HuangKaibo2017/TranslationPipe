@@ -111,7 +111,7 @@ class StandardWord(IContainer):
             finally:
                 if df is not None:
                     del df
-        logging.info(self._dict)
+        # logging.info(self._dict)
 
     def get_word_pair(self, src:str= 'en', dst:str= 'zh-cn'):
         key = "{}{}".format(src, dst)
