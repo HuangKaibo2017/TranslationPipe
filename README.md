@@ -10,7 +10,7 @@ Translation pipe is a small local tool to add standardized word of translation n
 
 ## Sample Steps
 ### 1. Put links of original article to the requirement[XXX].xlsx file to <project root>/data/requirement/ folder. Sample file: https://github.com/HuangKaibo2017/TranslationPipe/blob/master/data/requirement/requirement20170830.xlsx.
-### 2. on the command windows, run the script by:
+### 2. On the command windows, run the script by:
 ```
 python main.py -c
 ```
