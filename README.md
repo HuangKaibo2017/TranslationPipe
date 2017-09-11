@@ -1,8 +1,8 @@
 # TranslationPipe
 Translation pipe is a small local tool to add standardized word of translation next to the matched key word. Request or bug-report is welcome.
 
-## features
-#### - It accept request links (uri) in an excel file(xlsx), download and standardize the links lised.
+## Features
+#### - It accept request links (uri) in an excel file(xlsx), download and standardize the links listed.
 #### - If the links downloaded, it wouldn't download again, either the standardized links.
 #### - It output results to the request links excel file.
 
