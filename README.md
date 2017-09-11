@@ -25,7 +25,7 @@ The results should appear in <project root>/data/standardized.
 
 ## TODOs
 1. No.2 of the Known Issues;
-2. Work as a small SAS;
+2. Work as a small SAAS;
 3. Support word, pdf;
 4. Support OCR of images.
 
