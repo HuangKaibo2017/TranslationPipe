@@ -16,8 +16,8 @@ python main.py -c
 ```
 The results should appear in <project root>/data/standardized.
 
-## Supported Version
-Python 3.6. Not tested on other versions yet.
+## Tested Platforms
+1. Python 3.6 with Windows 10 x64.
 
 ## Known Issues
 1. Can't touch websites banned by the-great-wall;
