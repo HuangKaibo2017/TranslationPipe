@@ -1,5 +1,5 @@
 # TranslationPipe
-Translation pipe is a small local tool to add standardized word of translation next to the matched key word. Request or bug-report is welcome.
+Translation pipe is a small local tool to add standardized word of translation next to the matched key word. Suggestion and issue-report are welcome! :)
 
 ## Features
 #### - It accept request links (uri) in an excel file(xlsx), download and standardize the links listed.
@@ -14,7 +14,9 @@ Translation pipe is a small local tool to add standardized word of translation n
 ```
 python main.py -c
 ```
-The results should appear in <project root>/data/standardized.
+The results should appear in <project root>/data/standardized. 
+  
+Enjoy! 
 
 ## Tested Platforms
 1. Python 3.6 with Windows 10 x64.
