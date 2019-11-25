@@ -30,6 +30,7 @@ Enjoy!
 2. Work as a small SAAS;
 3. Support word, pdf;
 4. Support OCR of images.
+5. download article translated by 机器之心、大数据文摘、数据派 as the training materials.
 
 ## Supports needed
 1. sugguestion and issure report;
