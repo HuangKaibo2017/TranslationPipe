@@ -26,6 +26,7 @@ Enjoy!
 2. Can't download contents loaded dynamically (i.e. loaded by js code) -- yes, i will deal with it later;
 
 ## TODOs
+0. Change the file format of terminology from 机器之心;
 1. No.2 of the Known Issues;
 2. Work as a small SAAS;
 3. Support word, pdf;
@@ -36,3 +37,7 @@ Enjoy!
 1. sugguestion and issure report;
 2. standard word contribution;
 3. donation.
+
+## Reference
+1. 机器之心（Artificial-Intelligence-Terminology）：https://github.com/jiqizhixin/Artificial-Intelligence-Terminology#artificial-intelligence-terminology
+2. 机器之心（Github 词汇集项目）：https://github.com/jiqizhixin/AI-Terminology-page#github-%E8%AF%8D%E6%B1%87%E9%9B%86%E9%A1%B9%E7%9B%AE
