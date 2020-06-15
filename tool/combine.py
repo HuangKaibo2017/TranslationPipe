@@ -54,6 +54,8 @@ Solution
     partitioned by Char order, like A, B, C,...
     Each char occupies one sheet.
 """
+
+import config as CONF, log as LOG, logging as lg
 from pathlib import Path
 import pandas as pd
 import numpy as np
@@ -62,6 +64,7 @@ from typing import Dict, List, Any, AnyStr, Union
 
 ROOT = Path('.')
 ROOT_AI_TERM = ROOT.joinpath(Path('data','ref','Artificial-Intelligence-Terminology-master','data'))
+log = lg.getLevelName(__name__)
 
 
 def get_typed_df() -> Dict[str, Any]:
@@ -91,12 +94,13 @@ def process():
                 if len(en) < 1 or en == '英文' or en == '---': continue
                 if len(ens) > 1:
                     en_abbr = ens[1].upper().strip()
-                cn_zh = items[1].strip()
+                cn_zh = items[1].strip().replace('／', '/')
                 data.append([en[0], en, en_abbr, cn_zh])
     # print(data)
     cols = get_typed_df()
     df = pd.DataFrame(data, columns=cols)
-    df.to_csv(r'C:\Users\Ron\Desktop\export_dataframe.csv', index = False, header=True)
+    df.sort_values(['capital', 'en'], ascending=[True, False], inplace=True)
+    df.to_csv(str(Path(CONF.ROOT, 'data', CONF.DATA_FILE)), index=False, header=True)
 
 
 if __name__ == '__main__':

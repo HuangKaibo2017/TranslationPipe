@@ -27,11 +27,12 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import config
+import config as CONF
+from tool import g_root
 import logging as lg
 from logging.handlers import TimedRotatingFileHandler
 from sys import stdout
-from env import g_root
+
 
 
 __all__ = [] # It should not be imported anything.
@@ -57,16 +58,16 @@ def get_file_handler(file:str) -> lg.FileHandler:
 
 
 def config_root_logger():
-    log_file = g_root.joinpath(config.LOG_FILE)
-    if config.RELEASE:
+    log_file = g_root.joinpath(CONF.LOG_FILE)
+    if CONF.RELEASE:
         lg.root.addHandler(get_file_handler(str(log_file)))
     else:
-        if config.DEVEOPMENT:
+        if CONF.DEVEOPMENT:
             lg.root.addHandler(get_console_handler())
         else:
             lg.root.addHandler(get_file_handler(str(log_file)))
             lg.root.addHandler(get_console_handler())
-    lg.root.setLevel(config.LOG_LEVEL)
+    lg.root.setLevel(CONF.LOG_LEVEL)
 
 
 config_root_logger()
