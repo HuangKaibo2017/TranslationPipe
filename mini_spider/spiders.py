@@ -1,5 +1,3 @@
-#!/usr/b#!/usr/bin/python3.6
-# -*- coding: UTF-8 -*-
 __author__ = 'Huang Kaibo <kamp_kbh@hotmail.com>'
 # The following code, derived from the bulbs project, carries this
 # license:
@@ -27,7 +25,10 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
+
+
 USER_AGENT='Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like MAC OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 Chrome/54.0.2840.71 Safari/9537.53'
+
 
 import os, logging
 from datetime import datetime

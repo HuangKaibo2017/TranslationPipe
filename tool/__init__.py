@@ -1,8 +1,4 @@
-#!/usr/b#!/usr/bin/python3.6
-# -*- coding: UTF-8 -*-
 __author__ = 'Huang Kaibo <kamp_kbh@hotmail.com>'
-# The following code, derived from the bulbs project, carries this
-# license:
 """
 Copyright (c) 2017 Huang Kaibo (kamp_kbh@hotmail.com)
 All rights reserved.
@@ -27,15 +23,20 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
+
+
 import sys, os, errno, re
 from pathlib import Path
 from numbers import Number
 from pandas import isnull
 
+
 g_root = None
+
 
 def is_exe_mode():
     return getattr(sys, 'frozen', False)
+
 
 def get_root():
     """

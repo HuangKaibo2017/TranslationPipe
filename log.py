@@ -25,3 +25,48 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
+
+
+import config
+import logging as lg
+from logging.handlers import TimedRotatingFileHandler
+from sys import stdout
+from env import g_root
+
+
+__all__ = [] # It should not be imported anything.
+
+
+FMT_DETAIL = lg.Formatter(fmt='[%(asctime)s-%(levelname)-4s- %(filename)-10s %(funcName)-12s :%(lineno)03s]%(message)s.'
+                          , datefmt='%Y%m%dT%H%M%S')
+# FMT_LITE = lg.Formatter(fmt='%(asctime)s — %(name)s — %(levelname)s — %(message)s', datefmt='%Y%m%d:%H%M%S')
+
+
+def get_console_handler() -> lg.StreamHandler:
+   handler = lg.StreamHandler(stdout)
+   handler.setLevel(lg.NOTSET)
+   handler.setFormatter(FMT_DETAIL)
+   return handler
+
+
+def get_file_handler(file:str) -> lg.FileHandler:
+    handler = TimedRotatingFileHandler(file, when='midnight', encoding='utf-8', backupCount=24, delay=True)
+    handler.setLevel(lg.NOTSET)
+    handler.setFormatter(FMT_DETAIL)
+    return handler
+
+
+def config_root_logger():
+    log_file = g_root.joinpath(config.LOG_FILE)
+    if config.RELEASE:
+        lg.root.addHandler(get_file_handler(str(log_file)))
+    else:
+        if config.DEVEOPMENT:
+            lg.root.addHandler(get_console_handler())
+        else:
+            lg.root.addHandler(get_file_handler(str(log_file)))
+            lg.root.addHandler(get_console_handler())
+    lg.root.setLevel(config.LOG_LEVEL)
+
+
+config_root_logger()

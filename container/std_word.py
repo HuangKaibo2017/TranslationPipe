@@ -1,5 +1,3 @@
-#!/usr/b#!/usr/bin/python3.6
-# -*- coding: UTF-8 -*-
 __author__ = 'Huang Kaibo <kamp_kbh@hotmail.com>'
 # The following code, derived from the bulbs project, carries this
 # license:
@@ -27,6 +25,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
+
 import sys, logging
 sys.path.insert(0, "..")
 from interface.icontainer import IContainer

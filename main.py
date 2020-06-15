@@ -1,5 +1,3 @@
-#!/usr/b#!/usr/bin/python3.6
-# -*- coding: UTF-8 -*-
 __author__ = 'Huang Kaibo <kamp_kbh@hotmail.com>'
 # The following code, derived from the bulbs project, carries this
 # license:
@@ -27,9 +25,10 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
+
+
 import logging, os, sys
 from os import path
-
 from container.std_word import StandardWord
 from translation.standardizors import Standardizor
 from mini_spider.spiders import Spider
@@ -43,9 +42,11 @@ from pandas.io.excel import ExcelWriter
 from glob import glob
 from shutil import copy2
 
+
 logging.basicConfig(
     format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
     , datefmt='%Y%m%d-%H%M%S', level=logging.INFO)
+
 
 if __name__ == "__main__":
     root = get_root()

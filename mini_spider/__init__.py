@@ -1,5 +1,3 @@
-#!/usr/b#!/usr/bin/python3.6
-# -*- coding: UTF-8 -*-
 __author__ = 'Huang Kaibo <kamp_kbh@hotmail.com>'
 # The following code, derived from the bulbs project, carries this
 # license:
