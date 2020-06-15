@@ -27,7 +27,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import logging, os, sys
+import log, logging as lg
+import os, sys
 from os import path
 from container.std_word import StandardWord
 from translation.standardizors import Standardizor
@@ -43,9 +44,10 @@ from glob import glob
 from shutil import copy2
 
 
-logging.basicConfig(
-    format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
-    , datefmt='%Y%m%d-%H%M%S', level=logging.INFO)
+# logging.basicConfig(
+#     format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
+#     , datefmt='%Y%m%d-%H%M%S', level=logging.INFO)
+log = lg.getLevelName(__name__)
 
 
 if __name__ == "__main__":
@@ -65,7 +67,7 @@ if __name__ == "__main__":
     folder_temp = root.joinpath(c.DATA, c.FOLDER_TEMP)
     if not path.exists(folder_temp):
         os.mkdir(folder_temp)
-    logging.info("root:%s.\nfolder_std_word:%s.\nfolder_requirement:%s.\nfolder_download:%s.\nfolder_standardized:%s.\n"
+    log.info("root:%s.\nfolder_std_word:%s.\nfolder_requirement:%s.\nfolder_download:%s.\nfolder_standardized:%s.\n"
                  , root, folder_std_word, folder_requirement, folder_download, folder_standardized)
 
     spider = Spider(folder_download)
@@ -123,6 +125,6 @@ if __name__ == "__main__":
                 os.remove(save_i)
         except:
             exc_type, exc_val, _ = sys.exc_info()
-            logging.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
+            log.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
 
 

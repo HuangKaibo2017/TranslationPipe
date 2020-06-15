@@ -27,12 +27,13 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import logging, os
+import log, logging as lg
+import os
 from tool import get_root
-logging.basicConfig(
-    format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
-    , datefmt='%Y%m%d-%H%M%S', level=logging.INFO
-    , filename=str(get_root().joinpath("test_translation.log")))
+# logging.basicConfig(
+#     format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
+#     , datefmt='%Y%m%d-%H%M%S', level=logging.INFO
+#     , filename=str(get_root().joinpath("test_translation.log")))
 import unittest
 from container.std_word import StandardWord
 from copy import deepcopy
@@ -46,6 +47,7 @@ class TestAlgorithm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.log = lg.getLevelName(__name__)
         logging.info("setUpClass.\n")
         cls._download_path = str(get_root().joinpath(c.DOWNLOAD))
         cls._standardized_path = str(get_root().joinpath(c.STANDARDIZED))
@@ -59,20 +61,20 @@ class TestAlgorithm(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        logging.info("tearDownClass\n")
+        cls.log.info("tearDownClass\n")
 
     def setUp(self):
-        logging.info("setup\n")
+        cls.log.info("setup\n")
 
     def tearDown(self):
-        logging.info("tearDown\n")
+        cls.log.info("tearDown\n")
 
 
     def test_container(self):
         s_w = StandardWord(*self._csds_container)
-        print(s_w._dict)
-        print(s_w.get_word_pair('en', 'zh-cn'))
-        print(s_w.get_word_pair('zh-cn', 'en'))
+        self.log.info(s_w._dict)
+        self.log.info(s_w.get_word_pair('en', 'zh-cn'))
+        priself.log.infont(s_w.get_word_pair('zh-cn', 'en'))
 
     @unittest.skip("disable for debug")
     def test_spider_agent(self):
@@ -86,15 +88,15 @@ class TestAlgorithm(unittest.TestCase):
         s_w = StandardWord(*self._csds_container)
         tran = Standardizor(self._standardized_path)
         tran.parse(file, s_w)
-        print(file)
+        self.log.info(file)
 
     @unittest.skip("disable for debug")
     def test_request_list(self):
         root = str(get_root().joinpath(c.DATA, c.REQUIREMENT))
         rl = Requirement(root)
         rl.load_info()
-        print(rl.info)
+        self.log.info(rl.info)
 
 if __name__ == '__main__':
-    logging.info("__main__\n")
+    self.log.info("__main__\n")
     unittest.main()

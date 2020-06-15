@@ -34,3 +34,4 @@ RELEASE = False
 DEVEOPMENT = True
 LOG_LEVEL = lg.INFO
 LOG_FILE = 'epipe.log'
+DATA_FILE = 'translation.csv'
