@@ -26,7 +26,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import sys, logging
+import log, sys, logging as l
 sys.path.insert(0, "..")
 from interface.icontainer import IContainer
 import pandas as pd
@@ -34,17 +34,20 @@ from copy import deepcopy
 from pathlib import Path
 import constant as c
 
-class StandardWord(IContainer):
+
+
+class Terminology(IContainer):
     r"""
     """
     def __init__(self, root:str, source_type:str):
         """
 
         :param source: source.
-        :param source: type of source. It could be "csv_file", "xlsx_file", "csv_str".
-        :param language_heads: for example: {'en':[1,2],'zh-cn':[3]}
+        :param source: type of source. It could be "csv_file", "csv_str".
+        :param language_heads: for example: {'en':[1,2],'cn_zh':[3]}
         """
         super().__init__()
+        self.log = l.getLogger(__name__)
         self._root = root
         self._dict = dict()
         self._cache = dict()
@@ -107,11 +110,11 @@ class StandardWord(IContainer):
                 self._language_heads = language_heads
             except:
                 exc_type, exc_val, _ = sys.exc_info()
-                logging.error("err[{}]:{}".format(exc_type, exc_val, exc_info=True))
+                self.log.error("err[{}]:{}".format(exc_type, exc_val, exc_info=True))
             finally:
                 if df is not None:
                     del df
-        # logging.info(self._dict)
+        # self.log.info(self._dict)
 
     def get_word_pair(self, src:str='en', dst:str='cn_zh'):
         key = "{}{}".format(src, dst)

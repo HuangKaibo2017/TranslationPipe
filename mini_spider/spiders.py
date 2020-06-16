@@ -27,9 +27,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-USER_AGENT='Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like MAC OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 Chrome/54.0.2840.71 Safari/9537.53'
-
-
 import os, logging
 from datetime import datetime
 import requests
@@ -38,9 +35,13 @@ from tool import is_path_exists_or_creatable, get_valid_file_name
 import constant as c
 
 
+USER_AGENT='Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like MAC OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 Chrome/54.0.2840.71 Safari/9537.53'
+
+
 class Spider(object):
     def __init__(self, save_folder:str, *args, **kwargs):
         self._save_folder = save_folder
+
 
     def _parse(self, response:requests.Response):
         uri = Path(response.url).name
@@ -57,12 +58,14 @@ class Spider(object):
             f.flush()
         return (file_name, response.encoding)
 
+
     def start_single(self, uri, download):
         before = datetime.now()
         resp = requests.get(uri, headers={'user-agent': USER_AGENT})
         after = datetime.now()
         logging.info("Downloaded with %s seconds.", after - before)
         return self._parse(resp)
+
 
     def start(self, links:dict):
         for k, v in links.items():
@@ -75,6 +78,7 @@ class Spider(object):
             logging.info("saved to '%s'", file_name)
             links[k][c.DOWNLOAD] = file_name
             links[k][c.ENCODING] = encoding
+
 
 # Response Head.
 # {

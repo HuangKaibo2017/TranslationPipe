@@ -35,13 +35,14 @@ from tool import get_root
 #     , datefmt='%Y%m%d-%H%M%S', level=logging.INFO
 #     , filename=str(get_root().joinpath("test_translation.log")))
 import unittest
-from container.std_word import StandardWord
+from container.term import Terminology
 from copy import deepcopy
 from datetime import datetime
 from mini_spider.spiders import Spider
 from translation.standardizors import Standardizor
 from requirement import Requirement
 import constant as c
+
 
 class TestAlgorithm(unittest.TestCase):
 
@@ -71,10 +72,10 @@ class TestAlgorithm(unittest.TestCase):
 
 
     def test_container(self):
-        s_w = StandardWord(*self._csds_container)
-        self.log.info(s_w._dict)
-        self.log.info(s_w.get_word_pair('en', 'zh-cn'))
-        priself.log.infont(s_w.get_word_pair('zh-cn', 'en'))
+        term = Terminology(*self._csds_container)
+        self.log.info(term._dict)
+        self.log.info(term.get_word_pair('en', 'cn_zh'))
+        self.log.info(term.get_word_pair('cn_zh', 'en'))
 
     @unittest.skip("disable for debug")
     def test_spider_agent(self):
@@ -85,9 +86,9 @@ class TestAlgorithm(unittest.TestCase):
     @unittest.skip("disable for debug")
     def test_standardized(self):
         file = {"https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/": {c.DOWNLOAD:r"C:\projects\personal\TranslationPipe\download\20170828115408438438.html", c.STANDARDIZED:""}}
-        s_w = StandardWord(*self._csds_container)
+        term = Terminology(*self._csds_container)
         tran = Standardizor(self._standardized_path)
-        tran.parse(file, s_w)
+        tran.parse(file, term)
         self.log.info(file)
 
     @unittest.skip("disable for debug")

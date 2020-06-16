@@ -30,7 +30,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import log, logging as l
 import os, sys
 from os import path
-from container.std_word import StandardWord
+from container.term import Terminology
 from translation.standardizors import Standardizor
 from mini_spider.spiders import Spider
 from tool import get_root, get_val
@@ -71,7 +71,7 @@ if __name__ == "__main__":
                  , root, folder_term, folder_requirement, folder_download, folder_standardized)
 
     spider = Spider(folder_download)
-    std_word = StandardWord(folder_term, c.TYPE_FILE_XLSX)
+    term = Terminology(folder_term, c.TYPE_FILE_CSV)
     std = Standardizor(folder_standardized)
 
     info = dict()
@@ -101,8 +101,8 @@ if __name__ == "__main__":
                     else:
                         download = path.join(folder_download, download)
                     if not standardized and len(standardized) < 1:
-                        word_pair = std_word.get_word_pair(src_language, dst_language)
-                        standardized = std.parse_single(download, word_pair, std_word.ext_property)
+                        word_pair = term.get_word_pair(src_language, dst_language)
+                        standardized = std.parse_single(download, word_pair, term.ext_property)
                         df.set_value(index, 'standardized', path.basename(standardized))
                 except:
                     exc_type, exc_val, _ = sys.exc_info()
