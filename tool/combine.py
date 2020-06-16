@@ -55,16 +55,17 @@ Solution
     Each char occupies one sheet.
 """
 
-import config as CONF, log as LOG, logging as lg
+import config as CONF, log, logging as lg
 from pathlib import Path
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Any, AnyStr, Union
+from typing import Dict, List, Any, AnyStr, Union, Callable
 
 
 ROOT = Path('.')
 ROOT_AI_TERM = ROOT.joinpath(Path('data','ref','Artificial-Intelligence-Terminology-master','data'))
-log = lg.getLevelName(__name__)
+FILE_GITHUB_TERM = ROOT.joinpath(Path('data','ref','机器之心-github词汇集合项目.md'))
+l = lg.getLevelName(__name__)
 
 
 def get_typed_df() -> Dict[str, Any]:
@@ -77,6 +78,26 @@ def get_typed_df() -> Dict[str, Any]:
     return dtypes
 
 
+def process_md(f:Any) -> List:
+    res_list: List = []
+    for line in f:
+        items = line.split('|')
+        if len(items) <= 2 and len(items) >=4:
+            continue
+        ens = items[0].split('/')
+        en,en_abbr = ens[0].lower().strip(),''
+        if len(en) < 1 or en == '英文' or en == '---': continue
+        if len(ens) > 1:
+            en_abbr = ens[1].upper().strip()
+        try:
+            cn_zh = items[1].strip().replace('／', '/')
+        except Exception as e:
+            print('log',l)
+            
+        res_list.append([en[0], en, en_abbr, cn_zh])
+    return res_list
+
+
 def process():
     # python .\tool\combine.py
     # step 1, process  data/ref/Artificial-Intelligence-Terminology-master/data/... 
@@ -85,20 +106,18 @@ def process():
     for f_rm in ROOT_AI_TERM.iterdir():
         print(f_rm)
         with open(str(f_rm), 'r', encoding='utf-8') as f:
-            for line in f:
-                items = line.split('|')
-                if len(items) <= 2:
-                    continue
-                ens = items[0].split('/')
-                en,en_abbr = ens[0].lower().strip(),''
-                if len(en) < 1 or en == '英文' or en == '---': continue
-                if len(ens) > 1:
-                    en_abbr = ens[1].upper().strip()
-                cn_zh = items[1].strip().replace('／', '/')
-                data.append([en[0], en, en_abbr, cn_zh])
+            data.append(process_md(f))
     # print(data)
     cols = get_typed_df()
     df = pd.DataFrame(data, columns=cols)
+
+    # step 2, process data/ref/机器之心-github词汇集合项目.md
+    data2 = None
+    with open(str(FILE_GITHUB_TERM), 'r', encoding='utf-8') as f:
+        data2 = process_md(f)
+    df2 = pd.DataFrame(data2, columns=cols)
+    df = pd.concat([df,df2])
+
     df.sort_values(['capital', 'en'], ascending=[True, False], inplace=True)
     df.to_csv(str(Path(CONF.ROOT, 'data', CONF.DATA_FILE)), index=False, header=True)
 
