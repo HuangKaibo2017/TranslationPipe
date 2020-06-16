@@ -27,7 +27,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import log, logging as lg
+import log, logging as l
 import os, sys
 from os import path
 from container.std_word import StandardWord
@@ -47,7 +47,7 @@ from shutil import copy2
 # logging.basicConfig(
 #     format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
 #     , datefmt='%Y%m%d-%H%M%S', level=logging.INFO)
-log = lg.getLevelName(__name__)
+lg = l.getLogger(__name__)
 
 
 if __name__ == "__main__":
@@ -55,9 +55,9 @@ if __name__ == "__main__":
     folder_requirement = str(root.joinpath(c.DATA, c.REQUIREMENT))
     if not path.exists(folder_requirement):
         raise ValueError("requirement folder '{}' is not exists.".format(folder_requirement))
-    folder_std_word = root.joinpath(c.DATA, c.CS_DS)
-    if not path.exists(folder_std_word):
-        raise ValueError("standard word folder '{}' is not exists.".format(folder_std_word))
+    folder_term = root.joinpath(c.DATA, c.TERMNINOLOGY)
+    if not path.exists(folder_term):
+        raise ValueError("Terminology File '{}' is not exists.".format(folder_term))
     folder_download = str(root.joinpath(c.DATA, c.DOWNLOAD))
     if not path.exists(folder_download):
         os.mkdir(folder_download)
@@ -67,11 +67,11 @@ if __name__ == "__main__":
     folder_temp = root.joinpath(c.DATA, c.FOLDER_TEMP)
     if not path.exists(folder_temp):
         os.mkdir(folder_temp)
-    log.info("root:%s.\nfolder_std_word:%s.\nfolder_requirement:%s.\nfolder_download:%s.\nfolder_standardized:%s.\n"
-                 , root, folder_std_word, folder_requirement, folder_download, folder_standardized)
+    lg.info("root:%s.\nfolder terminology:%s.\nfolder requirement:%s.\nfolder download:%s.\nfolder standardized:%s.\n"
+                 , root, folder_term, folder_requirement, folder_download, folder_standardized)
 
     spider = Spider(folder_download)
-    std_word = StandardWord(folder_std_word, c.TYPE_FILE_XLSX)
+    std_word = StandardWord(folder_term, c.TYPE_FILE_XLSX)
     std = Standardizor(folder_standardized)
 
     info = dict()
@@ -81,7 +81,7 @@ if __name__ == "__main__":
             continue
         df: pd.DataFrame = None
         try:
-            logging.info("**processing ‘%s’.", i)
+            lg.info("**processing ‘%s’.", i)
             df: pd.DataFrame = pd.read_excel(i, na_values=[''],na_filter=False)
             index = 0
             for row in df.itertuples(index=True):
@@ -106,7 +106,7 @@ if __name__ == "__main__":
                         df.set_value(index, 'standardized', path.basename(standardized))
                 except:
                     exc_type, exc_val, _ = sys.exc_info()
-                    logging.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
+                    lg.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
                 index += 1
 
             save_i = path.join(folder_temp, path.basename(i))
@@ -125,6 +125,6 @@ if __name__ == "__main__":
                 os.remove(save_i)
         except:
             exc_type, exc_val, _ = sys.exc_info()
-            log.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
+            lg.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
 
 

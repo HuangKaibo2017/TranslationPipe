@@ -35,7 +35,8 @@ from pathlib import Path
 import constant as c
 
 class StandardWord(IContainer):
-
+    r"""
+    """
     def __init__(self, root:str, source_type:str):
         """
 
@@ -112,7 +113,7 @@ class StandardWord(IContainer):
                     del df
         # logging.info(self._dict)
 
-    def get_word_pair(self, src:str= 'en', dst:str= 'zh-cn'):
+    def get_word_pair(self, src:str='en', dst:str='cn_zh'):
         key = "{}{}".format(src, dst)
         if key in self._cache:
             return self._cache[key]
