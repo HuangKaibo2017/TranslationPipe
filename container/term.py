@@ -51,9 +51,8 @@ class Terminology(IContainer):
         The columns to match translation option words. Give English->Chinese scenario, to_cols could be value of ['en', 'en_abbr']
 
     Terminology csv file columns description
-    column name structure is <language_code>[.<index>]
+    column name structure is <language_code>
         language_code: like, en, cn, cn_zh, en_abbr
-        index: 0~9
 
     methods
     -------
@@ -65,14 +64,16 @@ class Terminology(IContainer):
     """
 
     COL_NAME = [C.LANG_EN_CAP, C.LANG_EN, C.LANG_EN_ABBR, C.LANG_CN_ZH]
-    COL_TYPE = {C.LANG_EN_CAP: str, C.LANG_EN: str, C.LANG_EN_ABBR: str, C.LANG_CN_ZH: str}
+    VAL_SEP = '/'
     
 
-    @staticmethod
-    def parse(val:Any) -> Any:
+    def parse(self, val:Any) -> Any:
+        r"""Convert value to 1. string type; 2. List if string is with VAL_SEP; 3. NaN like value to "".
+        """
         str_val = str(val)
-        temp = str_val.split('/')
+        temp = str_val.split(self.VAL_SEP)
         return temp if len(temp) > 1 else str_val
+
 
     def __init__(self, terminology_file:Path=None):
         if not terminology_file.is_file():
@@ -93,6 +94,6 @@ class Terminology(IContainer):
     # def _to_list(self, df:pd.DataFrame) -> None:
     #     for index, row in enumerate(df.itertuples(index=True)):
     #         for col_name in C.COL_SPLIT:
-    #             col_value = row[col_name].split('/') #if isinstance(row[col_name], str) else ''
+    #             col_value = row[col_name].split(self.VAL_SEP) #if isinstance(row[col_name], str) else ''
     #             df.loc[index, col_value] = col_value
 
