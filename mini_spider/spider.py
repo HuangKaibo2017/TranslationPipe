@@ -27,57 +27,65 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import os, logging
+import log, logging as l
+import constant as C
 from datetime import datetime
-import requests
+import requests as r
 from pathlib import Path
 from tool import is_path_exists_or_creatable, get_valid_file_name
-import constant as c
-
-
-USER_AGENT='Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like MAC OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 Chrome/54.0.2840.71 Safari/9537.53'
 
 
 class Spider(object):
-    def __init__(self, save_folder:str, *args, **kwargs):
-        self._save_folder = save_folder
+    r"""Spider: download webpage to specific local path as html files.
+
+    parameters
+    ----------
+    save_folder: str
+        the root folder of downloaded web page.
+    """
+
+    USER_AGENT='Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like MAC OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 Chrome/54.0.2840.71 Safari/9537.53'
 
 
-    def _parse(self, response:requests.Response):
-        uri = Path(response.url).name
-        file_name = "{}{}.html".format(datetime.now().strftime("%Y%m%d%H%M%S%f"), uri)
+    def __init__(self, save_folder:Path, *args, **kwargs):
+        self.log = l.getLogger(__name__)
+        self._save_folder:Path = save_folder
+
+
+    def _parse(self, resp: r.Response) -> (Path, str):
+        uri = Path(resp.url).name
+        file_name = f'{datetime.now().strftime("%Y%m%d%H%M%S%f")}{uri}.html'
         if not is_path_exists_or_creatable(file_name):
             file_name = get_valid_file_name(file_name)
-            # raise ValueError('Path is not valid:"{}".'.format(file_name))
-        logging.info("date_str:%s", file_name)
-        file_name = os.path.join(self._save_folder, file_name)
-        logging.info("**try to save file[%s]:%s.", response.encoding, file_name) # encoding: utf-8
-        logging.info("**url:%s", response.url)  # request link
+        self.log.info(f"file_name:{file_name}")
+        file_name = self._save_folder.joinpath(file_name)
+        self.log.info(f"**try to save file[{resp.encoding}]:{file_name}") # encoding: utf-8
+        self.log.info(f"**url:{resp.url}")  # request link
         with open(file_name, "wb+") as f:
-            f.write(response.content)
+            f.write(resp.content)
             f.flush()
-        return (file_name, response.encoding)
+        return (file_name, resp.encoding)
 
 
-    def start_single(self, uri, download):
+    def start_single(self, uri, download) -> (Path, str):
         before = datetime.now()
-        resp = requests.get(uri, headers={'user-agent': USER_AGENT})
+        resp = r.get(uri, headers={'user-agent': self.USER_AGENT})
         after = datetime.now()
-        logging.info("Downloaded with %s seconds.", after - before)
+        self.log.info(f"Downloaded with {after - before} seconds")
         return self._parse(resp)
 
 
-    def start(self, links:dict):
+    def start(self, links: dict):
         for k, v in links.items():
-            logging.info("v:%s.%s", v, type(v[c.DOWNLOAD]))
-            if 'download' in v and len(v[c.DOWNLOAD]) > 0:
-                logging.info("**omitted. uri:'%s' is downloaded, '%s'.", k, v[c.DOWNLOAD])
+            self.log.info(f"v:{v}.{v[C.REQ_DOWNLOAD]}")
+            if C.REQ_DOWNLOAD in v and len(v[C.REQ_DOWNLOAD]) > 0:
+                self.log.info(f"**omitted. uri:'{k}' is downloaded, '{v[C.REQ_DOWNLOAD]}'")
                 continue
-            logging.info("**Requesting '%s'.", k)
-            file_name, encoding = self.start_single(k, v[c.DOWNLOAD])
-            logging.info("saved to '%s'", file_name)
-            links[k][c.DOWNLOAD] = file_name
-            links[k][c.ENCODING] = encoding
+            self.log.info(f"**Requesting '{k}'")
+            file_name, encoding = self.start_single(k, v[C.REQ_DOWNLOAD])
+            self.log.info(f"saved to '{file_name}'")
+            links[k][C.REQ_DOWNLOAD] = file_name
+            links[k][C.REQ_ENCODING] = encoding
 
 
 # Response Head.

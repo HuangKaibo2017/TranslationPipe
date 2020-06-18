@@ -28,15 +28,16 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 import logging as lg
-from tool import get_root
 
 
-__all__ = ['ROOT', 'RELEASE', 'DEVEOPMENT', 'LOG_LEVEL', 'LOG_FILE', 'DATA_FILE']
-
-
-ROOT = get_root()
 RELEASE = False
 DEVEOPMENT = True
 LOG_LEVEL = lg.INFO
-LOG_FILE = 'epipe.log'
-DATA_FILE = 'translation.csv'
+LOG_FILE = 'trans_pipe.log'
+TERMNINOLOGY_FILE = 'terminology.csv'
+DIR_DATA = "data"
+DIR_TERM = "term"
+DIR_DOWNLOAD = "download"
+DIR_STANDARDIZED = "standardized"
+DIR_REQUIREMENT = "requirement"
+DIR_FOLDER_TEMP = "temp"

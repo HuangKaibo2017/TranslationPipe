@@ -54,7 +54,7 @@ def get_root():
     return g_root
 
 
-def get_val(val, default=u''):
+def get_val(val, default=''):
     if not val:  # if it is None, return default.
         return default
     elif isinstance(val, Number):

@@ -27,16 +27,20 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-LANG_SRC = "src_language"
-LANG_DST = "dst_language"
-URI = "uri"
-DOWNLOAD = "download"
-STANDARDIZED = "standardized"
-DATA = "data"
-REQUIREMENT = "requirement"
-TERMNINOLOGY = 'terminologies.csv'
-TYPE_FILE_XLSX = "xlsx_file"
-TYPE_FILE_CSV = "csv_file"
-TYPE_CSV_STR = "csv_str"
-ENCODING = "encoding"
-FOLDER_TEMP = "temp"
+# the columns name of requirement.xlsx
+REQ_LANG_SRC = "src_language"
+REQ_LANG_DST = "dst_language"
+REQ_URI = "uri"
+REQ_DOWNLOAD = "download"
+REQ_STANDARDIZED = "standardized"
+REQ_ENCODING = "encoding"
+
+# the columns name of terminology.csv
+LANG_EN_CAP = 'en_cap'
+LANG_EN = 'en'
+LANG_ABBR = 'abbr'
+LANG_EN_ABBR = 'en_abbr'
+LANG_CN_ZH = 'cn_zh'
+
+COL_SPLIT = {LANG_EN, LANG_EN_ABBR, LANG_CN_ZH}
+

@@ -27,77 +27,73 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
+import constant as C, config as CONF
 import log, logging as lg
-import os
-from tool import get_root
-# logging.basicConfig(
-#     format='[%(filename)s:%(lineno)s %(asctime)s %(levelname)s %(funcName)16s()]\n%(message)s'
-#     , datefmt='%Y%m%d-%H%M%S', level=logging.INFO
-#     , filename=str(get_root().joinpath("test_translation.log")))
 import unittest
-from container.term import Terminology
 from copy import deepcopy
 from datetime import datetime
-from mini_spider.spiders import Spider
+import pandas as pd, numpy as np
+from tool import get_root
+from container.term import Terminology
+from mini_spider.spider import Spider
 from translation.standardizors import Standardizor
-from requirement import Requirement
-import constant as c
 
 
-class TestAlgorithm(unittest.TestCase):
+class TestTranslation(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.log = lg.getLevelName(__name__)
-        logging.info("setUpClass.\n")
-        cls._download_path = str(get_root().joinpath(c.DOWNLOAD))
-        cls._standardized_path = str(get_root().joinpath(c.STANDARDIZED))
-        if not os.path.exists(cls._download_path):
-            os.mkdir(cls._download_path)
-        if not os.path.exists(cls._standardized_path):
-            os.mkdir(cls._standardized_path)
-        cls._csds_xlsx_file = str(get_root().joinpath(c.DATA, c.CS_DS))
-        cls._csds_col = {'en': [1, 2], 'zh-cn': [3]}
-        cls._csds_container = [cls._csds_xlsx_file, c.TYPE_FILE_XLSX]
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.log.info("tearDownClass\n")
-
-    def setUp(self):
-        cls.log.info("setup\n")
-
-    def tearDown(self):
-        cls.log.info("tearDown\n")
+        cls.log = lg.getLogger(__name__)
+        # cls.log.info("setUpClass.\n")
+        cls.root = get_root()
+        cls.download_path = cls.root.joinpath(CONF.DIR_DOWNLOAD)
+        cls.standardized_path = cls.root.joinpath(CONF.DIR_STANDARDIZED)
+        if not cls.download_path.exists():
+            cls.download_path.mkdir()
+        if not cls.standardized_path.exists():
+            cls.standardized_path.mkdir()
+        cls.term_file = cls.root.joinpath(CONF.DIR_DATA, CONF.DIR_TERM, CONF.TERMNINOLOGY_FILE)
 
 
-    def test_container(self):
-        term = Terminology(*self._csds_container)
-        self.log.info(term._dict)
-        self.log.info(term.get_word_pair('en', 'cn_zh'))
-        self.log.info(term.get_word_pair('cn_zh', 'en'))
+    # @classmethod
+    # def tearDownClass(cls):
+    #     cls.log.info("tearDownClass\n")
 
-    @unittest.skip("disable for debug")
+    # def setUp(self):
+    #     self.log.info("setup\n")
+
+    # def tearDown(self):
+    #     self.log.info("tearDown\n")
+
+
+    # @unittest.skip("disable for debug")
     def test_spider_agent(self):
-        urls = {"https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/":{c.DOWNLOAD:"", c.STANDARDIZED:""}}
-        sa = Spider(self._download_path)
+        # python -m unittest test.test_translation.TestTranslation.test_spider_agent
+        urls = {"https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/":{C.REQ_DOWNLOAD:"", C.REQ_STANDARDIZED:""}}
+        sa = Spider(self.download_path)
         sa.start(urls)
 
-    @unittest.skip("disable for debug")
+
     def test_standardized(self):
-        file = {"https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/": {c.DOWNLOAD:r"C:\projects\personal\TranslationPipe\download\20170828115408438438.html", c.STANDARDIZED:""}}
-        term = Terminology(*self._csds_container)
-        tran = Standardizor(self._standardized_path)
+        # python -m unittest test.test_translation.TestTranslation.test_spider_agent
+        file = {
+            "https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/": 
+            {
+                C.DOWNLOAD:r"C:\projects\personal\TranslationPipe\download\20170828115408438438.html", C.REQ_STANDARDIZED:""
+            }
+        }
+        term = Terminology(self.term_file)
+        tran = Standardizor(self.standardized_path)
         tran.parse(file, term)
         self.log.info(file)
 
-    @unittest.skip("disable for debug")
-    def test_request_list(self):
-        root = str(get_root().joinpath(c.DATA, c.REQUIREMENT))
-        rl = Requirement(root)
-        rl.load_info()
-        self.log.info(rl.info)
+    def test_terminology(self):
+        # python -m unittest test.test_translation.TestTranslation.test_terminology
+        self.log.info(f'term_file:{self.term_file}')
+        term = Terminology(self.term_file)
+        # self.log.info(term.term)
+        self.assertEqual(type(term.term), pd.DataFrame)
+
 
 if __name__ == '__main__':
-    self.log.info("__main__\n")
     unittest.main()

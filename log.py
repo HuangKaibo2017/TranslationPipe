@@ -28,7 +28,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 import config as CONF
-from tool import g_root
+from tool import get_root
 import logging as lg
 from logging.handlers import TimedRotatingFileHandler
 from sys import stdout
@@ -58,7 +58,7 @@ def get_file_handler(file:str) -> lg.FileHandler:
 
 
 def config_root_logger():
-    log_file = g_root.joinpath(CONF.LOG_FILE)
+    log_file = get_root().joinpath(CONF.LOG_FILE)
     if CONF.RELEASE:
         lg.root.addHandler(get_file_handler(str(log_file)))
     else:

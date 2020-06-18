@@ -102,5 +102,7 @@ ENV/
 
 # TranslationPipe
 data/ref/
+download/
+standardized/
 ~$*.*
 

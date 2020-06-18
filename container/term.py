@@ -26,107 +26,73 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import log, sys, logging as l
-sys.path.insert(0, "..")
+
+import constant as C, log, logging as l, sys
 from interface.icontainer import IContainer
-import pandas as pd
+import pandas as pd, numpy as np
 from copy import deepcopy
 from pathlib import Path
-import constant as c
-
+from typing import Any, List, Dict
 
 
 class Terminology(IContainer):
-    r"""
+    r"""The container of AI tech Terminology.
+
+    parameters
+    ----------
+    source_type: str
+        Type of source. It could be TYPE_CSV_FILE, TYPE_CSV_STR or TYPE_XLSX_FILE. Only TYPE_CSV_FILE implemented.
+    term_root_path: str
+        The terminology file root path. If it is a path with file name, only the file is to be used. If it is a 
+        directry, all files of the directry and sub-directry are loaded.
+    from_cols: List
+        The columns to match articles words. Give English articles scenario, from_cols could be value of ['en', 'en_abbr']
+    to_cols: List
+        The columns to match translation option words. Give English->Chinese scenario, to_cols could be value of ['en', 'en_abbr']
+
+    Terminology csv file columns description
+    column name structure is <language_code>[.<index>]
+        language_code: like, en, cn, cn_zh, en_abbr
+        index: 0~9
+
+    methods
+    -------
+
+    attributes
+    ----------
+    term: pd.DataFrame
+        container of terminology dataframe
     """
-    def __init__(self, root:str, source_type:str):
-        """
 
-        :param source: source.
-        :param source: type of source. It could be "csv_file", "csv_str".
-        :param language_heads: for example: {'en':[1,2],'cn_zh':[3]}
-        """
+    COL_NAME = [C.LANG_EN_CAP, C.LANG_EN, C.LANG_EN_ABBR, C.LANG_CN_ZH]
+    COL_TYPE = {C.LANG_EN_CAP: str, C.LANG_EN: str, C.LANG_EN_ABBR: str, C.LANG_CN_ZH: str}
+    
+
+    @staticmethod
+    def parse(val:Any) -> Any:
+        str_val = str(val)
+        temp = str_val.split('/')
+        return temp if len(temp) > 1 else str_val
+
+    def __init__(self, terminology_file:Path=None):
+        if not terminology_file.is_file():
+            raise ValueError('terminology_file arguement has to be file')
+        if terminology_file.suffix != '.csv':
+            raise ValueError(f'terminology_file arguement ({terminology_file.suffix}) has to be "csv" suffix file')
         super().__init__()
+        self.COL_CONV = {
+            C.LANG_EN_CAP: Terminology.parse, C.LANG_EN: Terminology.parse, C.LANG_EN_ABBR: Terminology.parse, C.LANG_CN_ZH: Terminology.parse
+        }
         self.log = l.getLogger(__name__)
-        self._root = root
-        self._dict = dict()
-        self._cache = dict()
-        self.ext_property = dict()
-        p = Path(self._root)
-        for i in p.glob("*.xlsx"):
-            if Path(i).name.startswith("~$"):
-                continue
-            df: pd.DataFrame = None
-            try:
-                if source_type == c.TYPE_FILE_CSV:
-                    df = pd.read_csv(i)
-                elif source_type == c.TYPE_FILE_XLSX:
-                    df = pd.read_excel(i)
-                else:
-                    raise NotImplementedError("source_type '{}' is not supported.".format(source_type))
-                lang_keys = []
-                index = 1
-                language_heads = {}
-                for i in df.keys():
-                    dot = i.find(".")
-                    # right now, only extend property is IGNORECASE.
-                    k, ext = (str(i)[0:dot], str(i)[dot+1:]) if dot > 0 else (i, "")
-                    if len(ext) > 0:
-                        self.ext_property[index] = ext
-                    if k not in lang_keys:
-                        lang_keys.append(k)
-                    if k not in language_heads:
-                        language_heads[k] = [index]
-                    else:
-                        language_heads[k].append(index)
-                    if k not in self._dict:
-                        self._dict[k] = {}
-                        self._dict[k][index] = {}
-                    else:
-                        if index not in self._dict[k]:
-                            self._dict[k][index] = {}
-                    index += 1
-                for row in df.itertuples(index=True):
-                    for i, k in language_heads.items():
-                        other_lang_keys = deepcopy(lang_keys)
-                        other_lang_keys.remove(i)
-                        for j in k:
-                            if pd.isnull(row[j]):
-                                continue
-                            for o in other_lang_keys:
-                                for l in language_heads[o]:
-                                    if pd.isnull(row[l]):
-                                        continue
-                                    if j in self._dict[i]:
-                                        if row[j] in self._dict[i][j]:
-                                            if o in self._dict[i][j][row[j]]:
-                                                self._dict[i][j][row[j]][o].append(row[l])
-                                            else:
-                                                self._dict[i][j][row[j]][o] = [row[l]]
-                                        else:
-                                            self._dict[i][j][row[j]] = {o: [row[l]]}
-                                    else:
-                                        self._dict[i] = {j: {row[j]: {o: [row[l]]}}}
-                self._language_heads = language_heads
-            except:
-                exc_type, exc_val, _ = sys.exc_info()
-                self.log.error("err[{}]:{}".format(exc_type, exc_val, exc_info=True))
-            finally:
-                if df is not None:
-                    del df
-        # self.log.info(self._dict)
+        self._root = terminology_file
+        self.term = pd.read_csv(terminology_file, names=self.COL_NAME, converters=self.COL_CONV, encoding='utf-8') #dtype=self.COL_TYPE,
 
-    def get_word_pair(self, src:str='en', dst:str='cn_zh'):
-        key = "{}{}".format(src, dst)
-        if key in self._cache:
-            return self._cache[key]
-        res = None
-        if 'en' in self._dict:
-            res = dict()
-            for k,v in self._dict[src].items():
-                res[k] = dict()
-                for k_i, v_i in v.items():
-                    res[k][k_i] = v_i[dst]
-        self._cache[key] = res
-        return res
+        self.term
+
+
+    # def _to_list(self, df:pd.DataFrame) -> None:
+    #     for index, row in enumerate(df.itertuples(index=True)):
+    #         for col_name in C.COL_SPLIT:
+    #             col_value = row[col_name].split('/') #if isinstance(row[col_name], str) else ''
+    #             df.loc[index, col_value] = col_value
 

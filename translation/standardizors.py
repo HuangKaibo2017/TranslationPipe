@@ -27,19 +27,22 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import log, logging as l, os, re
+import constant as C, log, logging as l, os, re
 from container.term import Terminology
 from pathlib import Path
-# from collections import OrderedDict
-import constant as c
 from datetime import datetime
 
-class Standardizor(object):
-    def __init__(self, std_path:str):
-        self.log = l.getLogger(__name__)
-        self._std_path = std_path
 
-    def parse_single(self, download, word_pair:dict, ext_properties:dict):
+class Standardizor(object):
+    r"""Standardizor
+    """
+
+    def __init__(self, std_path:Path):
+        self.log = l.getLogger(__name__)
+        self._std_path:Path = std_path
+
+
+    def parse_single(self, download:Path, word_pair:dict, ext_properties:dict) -> Path:
         before = datetime.now()
         terms = dict()
         content: str = None
@@ -56,8 +59,7 @@ class Standardizor(object):
                     if k_index not in terms:
                         terms[k_index] = [std_k, std_v]
         ordered_key = sorted(terms.keys())
-        # self.log.info("ordered_key:%s.", ordered_key)
-        std_f_name = os.path.join(self._std_path, str(Path(download).name))
+        std_f_name = self._std_path.joinpath(download.name)
         with open(std_f_name, "w+", encoding="utf-8") as s_f:
             start_i = 0
             key_index = 0
@@ -74,25 +76,19 @@ class Standardizor(object):
                 s_f.write("[翻译：{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
                 start_i = order_index + k_len
                 key_index += 1
-
-            # for std_i in ordered_key:
-            #     std_k = terms[std_i]
-            #     k_len = len(std_k[0])
-            #     s_f.write(content[start_i:std_i + k_len])
-            #     s_f.write("[翻译：{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
-            #     start_i = std_i + k_len
             s_f.flush()
         after = datetime.now()
-        self.log.info("Standardized with [%s]‘%s’.", after-before, std_f_name)
+        self.log.info(f"Standardized with [{after-before}]‘{std_f_name}’")
         return std_f_name
+
 
     def parse(self, files:dict, term:Terminology):
         replace = dict()
         for k, v in files.items():
-            if "standardized" in v and len(v[c.STANDARDIZED]) > 0:
-                self.log.info("**omitted. uri:'%s' is standardized, '%s'.", k, v[c.STANDARDIZED])
+            if C.REQ_STANDARDIZED in v and len(v[C.REQ_STANDARDIZED]) > 0:
+                self.log.info(f"**omitted. uri:'{k}' is standardized, '{v[C.REQ_STANDARDIZED]}'")
                 continue
-            if c.DOWNLOAD in v and len(v[c.DOWNLOAD]) > 0:
-                word_pair = term.get_word_pair(v[c.LANG_SRC], v[c.LANG_DST])
-                std_f_name = self.parse_single(v[c.DOWNLOAD], word_pair, term.ext_property)
-                v[c.STANDARDIZED] = std_f_name
+            if C.REQ_DOWNLOAD in v and len(v[C.REQ_DOWNLOAD]) > 0:
+                word_pair = term.get_word_pair(v[C.REQ_LANG_SRC], v[C.REQ_LANG_DST])
+                std_f_name = self.parse_single(v[C.REQ_DOWNLOAD], word_pair, term.ext_property)
+                v[C.REQ_STANDARDIZED] = std_f_name

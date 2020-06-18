@@ -1,4 +1,4 @@
-capital,en,en_abbr,cn_zh
+en_cap,en,en_abbr,cn_zh
 a,average-pooling,,平均池化
 a,average gradient,,平均梯度
 a,automatic summarization,,自动摘要
@@ -10,9 +10,8 @@ a,augmented lagrangian,,增广拉格朗日法
 a,attribute value,,属性值
 a,attribute space,,属性空间
 a,attribute conditional independence assumption,,属性条件独立性假设
-a,attribute,,描述属性
+a,attribute,,属性
 a,attention mechanism,,注意力机制
-a,attention mechanism,,注意机制
 a,asynchoronous stochastic gradient descent,,异步随机梯度下降
 a,asymptotically unbiased,,渐近无偏
 a,association analysis,,关联分析
@@ -54,7 +53,7 @@ b,break-event point,BEP,平衡点
 b,bounding boxes,,边界框
 b,bottleneck layer,,瓶颈层
 b,bootstrapping,,自助法
-b,bootstrap sampling,,自助采样法/可重复采样/有放回采样
+b,bootstrap sampling,,自助采样法/自助抽样法/可重复采样/有放回采样
 b,boltzmann machine,,玻尔兹曼机
 b,boltzmann distribution,,玻尔兹曼分布
 b,boilerplate code,,样板代码
@@ -68,14 +67,11 @@ b,binary classification,,二元分类
 b,big data,,大数据
 b,biased importance sampling,,有偏重要采样
 b,biased,,有偏
-b,bias-variance dilemma,,偏差 - 方差困境
-b,bias-variance dilemma,,偏差/方差困境
-b,bias-variance decomposition,,偏差-方差分解
-b,bias,,偏置 / 偏差
+b,bias-variance dilemma,,偏差困境/方差困境
+b,bias-variance decomposition,,偏差分解/方差分解
 b,bias,,偏置/偏差
 b,bi-partition,,二分法
 b,bi-directional long-short term memory,BI-LSTM,双向长短期记忆
-b,bi-directional long-short term memory,Bi-LSTM,双向长短期记忆
 b,between-class scatter matrix,,类间散度矩阵
 b,bellman equation,,贝尔曼方程
 b,belief network,,信念网络
@@ -89,14 +85,12 @@ b,bayes optimal classifier,,贝叶斯最优分类器
 b,bayes model averaging,BMA,贝叶斯模型平均
 b,bayes error,,贝叶斯误差
 b,bayes decision rule,,贝叶斯判定准则
-b,batch normalization,BN,批次归一化
-b,batch normalization,BN,分批标准化
+b,batch normalization,BN,分批标准化/批次归一化
 b,batch,,批次
 b,base learning algorithm,,基学习算法
 b,base learner,,基学习器
 b,bag of words,BOW,词袋
 b,backward induction,,逆向归纳
-b,backpropagation through time,,通过时间的反向传播
 b,backpropagation through time,BPTT,通过时间的反向传播
 b,backpropagation,BP,反向传播
 c,cutting plane algorithm,,割平面法
@@ -107,7 +101,6 @@ c,cumulative function,,累积函数
 c,crowdsourcing,,众包
 c,cross-correlation,,互相关函数
 c,cross validation,,交叉验证
-c,cross validation,,交叉验证法
 c,cross entropy,,交叉熵
 c,covariance matrix,,协方差矩阵
 c,covariance,,协方差
@@ -123,8 +116,7 @@ c,convolutional boltzmann machine,,卷积玻尔兹曼机
 c,convexity,,凸性
 c,convex quadratic programming,,凸二次规划
 c,convex optimization,,凸优化
-c,conversational agent,,会话智能体
-c,conversational agent,CA,会话代理
+c,conversational agent,CA,会话代理/会话智能体
 c,convergence,,收敛
 c,contractive neural network,,收缩神经网络
 c,contractive autoencoder,,收缩自编码器
@@ -142,8 +134,7 @@ c,confusion matrix,,混淆矩阵
 c,confidence,,置信度
 c,conference on neural information processing systems,NIPS,国际神经信息处理系统会议
 c,conditional risk,,条件风险
-c,conditional random field,CRF,条件随机场
-c,conditional random field,CRF,条件随机域/场
+c,conditional random field,CRF,条件随机域/条件随机场
 c,conditional probability table,CPT,条件概率表
 c,conditional mutual information,,条件互信息
 c,conditional entropy,,条件熵
@@ -183,7 +174,7 @@ c,central limit theorem,,中心极限定理
 c,centered difference,,中心差分
 c,causal modeling,,因果模型
 c,causal factor,,因果因子
-c,categorical distribution,,范畴分布、分类分布
+c,categorical distribution,,范畴分布/分类分布
 c,categorical distribution,,范畴分布
 c,categorical attribute,,分类属性
 c,cascade-correlation,,级联相关
@@ -191,11 +182,12 @@ c,cascade,COALESCED,级联
 c,canonical,,正则的
 c,calibration,,校准
 c,calculus of variations,,变分法
+capital,en,en_abbr,cn_zh
 d,dynamic programming,,动态规划
 d,dynamic fusion,,动态融合
 d,dummy node,,哑结点
 d,dual problem,,对偶问题
-d,dropout,,
+d,dropout,,随机失活
 d,downsampling,,下采样
 d,doubly block circulant matrix,,双重分块循环矩阵
 d,double backprop,,双反向传播
@@ -228,21 +220,17 @@ d,density-based clustering,,密度聚类
 d,density estimation,,密度估计
 d,denoising score matching,,去噪得分匹配
 d,denoising autoencoder,,去噪自编码器
-d,deep q-network,,深度 Q 网络
-d,deep q-network,DQN,深度Q网络
-d,deep q-learning,,深度 Q 学习
-d,deep q-learning,,深度Q学习
+d,deep q-network,DQN,深度 Q-网络
+d,deep q-learning,,深度 Q-学习
 d,deep neural network,DNN,深度神经网络
-d,deep learning,,深度学习
+d,deep learning,DL,深度学习
 d,deep generative model,,深度生成模型
 d,deep convolutional generative adversarial network,DCGAN,深度卷积生成对抗网络
 d,deep circuit,,深度回路
 d,deep boltzmann machine,,深度玻尔兹曼机
-d,deep belief network,,深度信念网络
 d,deep belief network,DBN,深度信念网络
 d,deduction,,演绎
 d,deconvolutional network,,解卷积网络
-d,decision trees,,决策树
 d,decision tree,,决策树/判定树
 d,decision stump,,决策树桩
 d,decision boundary,,决策边界
@@ -254,13 +242,13 @@ d,data set,,数据集
 d,data parallelism,,数据并行
 d,data mining,,数据挖掘
 d,data generating distribution,,数据生成分布
-d,d-separation,DIRECTED SEPARATION,有向分离
+d,directed separation,,有向分离
 e,extreme learning machine,ELM,超限学习机
 e,exponential loss function,,指数损失函数
 e,exploration,,探索
 e,exploitation,,利用
 e,exploding gradient problem,,梯度爆炸问题
-e,explaining away eﬀect,,相消解释作用
+e,explaining away effect,,相消解释作用
 e,expert network,,专家网络
 e,expected loss,,期望损失
 e,expectation-maximization,EM,期望最大化
@@ -268,7 +256,7 @@ e,exact,,确切的
 e,evolutionary computation,,演化计算
 e,euclidean norm,,欧几里得范数
 e,euclidean distance,,欧氏距离
-e,error-ambiguity decomposition,,误差-分歧分解
+e,error-ambiguity decomposition,,误差分解/分歧分解
 e,error rate,,错误率
 e,error correcting output codes,ECOC,纠错输出码
 e,epochs,,轮数/周期
@@ -349,7 +337,6 @@ g,generalized linear model,,广义线性模型
 g,generalized lagrange function,,广义拉格朗日函数
 g,generalization error bound,,泛化误差上界
 g,generalization error,,泛化误差
-g,generalization error,,泛化误差（新样本/测试集上的误差）
 g,generalization,,泛化
 g,general problem solving,,通用问题求解
 g,gaussian process,,高斯过程
@@ -377,7 +364,7 @@ h,heterogeneous information network,HIN,异质信息网络
 h,hesse matrix,,海赛矩阵
 h,harmonic mean,,调和平均
 h,hard voting,,硬投票
-h,hard  margin,,硬间隔
+h,hard margin,,硬间隔
 i,iterative dichotomiser,,迭代二分器
 i,isotonic regression,,等分回归
 i,isometric mapping,ISOMAP,等度量映射
@@ -388,7 +375,7 @@ i,intra-cluster similarity,,簇内相似度
 i,international conference for machine learning,ICML,国际机器学习大会
 i,inter-cluster similarity,,簇间相似度
 i,instance segmentation,,实例分割
-i,instance,,一个采样
+i,instance,,采样/实例
 i,insensitive loss,,不敏感损失
 i,input layer,,输入层
 i,input,,输入
@@ -411,30 +398,26 @@ i,imperfect information,,不完美信息
 i,image restoration,,图像复原
 i,identity matrix,,单位矩阵
 i,icml,,国际机器学习会议
-j,jensen-shannon divergence,JSD,JS 散度
+j,jensen-shannon divergence,JSD,JS散度
 j,jensen-shannon divergence,JSD,JS距离
 k,knowledge representation,,知识表征
-k,knowledge graph,,知识图谱
+k,knowledge graph,KG,知识图谱
 k,knowledge engineering,,知识工程
-k,knowledge base,,知识库
 k,knowledge base,KB,知识库
 k,kernelized linear discriminant analysis,KLDA,核线性判别分析
 k,kernel trick,,核技巧
 k,kernel method,,核方法
-k,k-nearest neighbours algorithm,KNN,K近邻算法
-k,k-nearest neighbours algorithm,K-NN,K-最近邻算法
-k,k-nearest neighbor （knn）,,k近邻学习
-k,k-means clustering,,K - 均值聚类
+k,k-nearest neighbours algorithm,KNN/K-NN,K近邻算法/K-最近邻算法
+k,k-nearest neighbor,,k近邻学习
 k,k-means clustering,,K-均值聚类
-k,k-fold cross validation,,k 折交叉验证/k 倍交叉验证
+k,k-fold cross validation,,k-折交叉验证/k-倍交叉验证
 l,low rank matrix approximation,,低秩矩阵近似
 l,loss function,,损失函数
 l,loss,,损失
 l,loopy belief propagation,,环状信念传播
 l,long-term dependency,,长期依赖
 l,long-short term memory,LSTM,长短期记忆
-l,logistic regression,,Logistic 回归
-l,logistic regression,,Logistic回归
+l,logistic regression,,逻辑回归/Logistic 回归
 l,log-linear regression,,对数线性回归
 l,log-likelihood,,对数似然
 l,log odds,LOGIT,对数几率
@@ -458,7 +441,7 @@ l,least squares regression tree,,最小二乘回归树
 l,learning vector quantization,LVQ,学习向量量化
 l,learning rate,,学习速率
 l,learning by analogy,,类比学习
-l,learning,,学习，训练
+l,learning,,学习/训练
 l,learner,,学习器
 l,leaky relu,,渗漏整流线性单元
 l,lazy learning,,懒惰学习
@@ -468,8 +451,6 @@ l,latent variable,,隐变量
 l,latent semantic analysis,,潜在语义分析
 l,latent semantic analysis,LSA,潜在语义分析
 l,latent dirichlet allocation,LDA,隐狄利克雷分布
-l,latent dirichlet allocation,,隐含狄利克雷分布
-l,latent dirichlet allocation,,隐狄利克雷分布
 l,laplacian correction,,拉普拉斯修正
 l,laplace smoothing,,拉普拉斯平滑
 l,language phenomena,,语言现象
@@ -482,40 +463,37 @@ m,multiple linear regression,,多元线性回归
 m,multiple dimensional scaling,,多维缩放
 m,multinomial distribution,,多项分布
 m,multimodal learning,,多模态学习
-m,multilayer perceptron,MLP,多层感知器
-m,multilayer perceptron,,多层感知机
+m,multilayer perceptron/multi layered perceptron,MLP,多层感知器/多层感知机
 m,multi-response linear regression,MLR,多响应线性回归
 m,multi-layer feedforward neural networks,,多层前馈神经网络
 m,multi-kernel learning,,多核学习
 m,multi-document summarization,,多文档摘要
 m,multi-class classification,,多类别分类
-m,multi layered perceptron,MLP,多层感知器
 m,moral graph,,道德图/端正图
 m,moore's law,,摩尔定律
 m,monte carlo estimate,,蒙特卡洛估计
 m,momentum,,动量
 m,moment matching,,矩匹配
-m,model predictive control (mpc),,模型预测控制
+m,model predictive control,MPC,模型预测控制
 m,mixture of experts,,混合专家
 m,mixture density network,,混合密度网络
 m,misclassification cost,,误分类成本
-m,minimax game,,极小极大博弈
-m,minimax game,,最小最大博弈
-m,minimal  description length,MDL,最小描述长度
+m,minimax game,,极小极大博弈/最小最大博弈
+m,minimal description length,MDL,最小描述长度
 m,mini-batch sgd,,小批次随机梯度下降
 m,micro-r,,微查全率
 m,micro-p,,微查准率
 m,metric learning,,度量学习
-m,meta-learner,,元学习器
+m,meta-learner/meta learner,,元学习器
 m,measure theory,,测度论
 m,mean-covariance restricted boltzmann machine,,均值-协方差受限玻尔兹曼机
 m,mean squared error,,均方误差
-m,mean product of student t-distribution,,学生 t 分布均值乘积
+m,mean product of student t-distribution,,学生 t-分布均值乘积
 m,maximum weighted spanning tree,,最大带权生成树
 m,maximum margin,,最大间隔
 m,maximum likelihood estimation,MLE,极大似然估计/极大似然法
-m,maximum likelihood,,最大似然
-m,maximum a posteriori,,最大后验
+m,maximum likelihood,,最大似然/极大似然
+m,maximum a posteriori,,最大后验/极大后验
 m,maximal clique,,最大团
 m,max-pooling,,最大池化
 m,matrix inversion,,逆矩阵
@@ -548,25 +526,20 @@ n,non-metric distance,,非度量距离
 n,non-linear oscillation,,非线性振荡
 n,non-convex optimization,,非凸优化
 n,nominal attribute,,列名属性
-n,noise-contrastive estimation,,噪音对比估计
 n,noise-contrastive estimation,NCE,噪音对比估计
 n,no free lunch theorem,NFL,没有免费的午餐定理
 n,newton method,,牛顿法
 n,neuromorphic computing,,神经形态计算
-n,neural turing machine,,神经图灵机
 n,neural turing machine,NTM,神经图灵机
 n,neural networks,,神经网络
-n,neural machine translation,,神经机器翻译
 n,neural machine translation,NMT,神经机器翻译
 n,neighbourhood component analysis,NCA,近邻成分分析
 n,negative semideﬁnite,,半负定
-n,negative log likelihood,,负对数似然
 n,negative log likelihood,NLL,负对数似然
 n,negative deﬁnite,,负定
 n,negative correlation,,负相关法
 n,negative class,,负类
 n,nearest-neighbor search,,最近邻搜索
-n,natural language processing,,自然语言处理
 n,natural language processing,NLP,自然语言处理
 n,natural language generation,NLG,自然语言生成
 n,nash reversion,,纳什回归
@@ -577,7 +550,6 @@ n,naive bayes,,朴素贝叶斯
 n,na?ve bayesian classification,,朴素贝叶斯分类器
 o,oversampling,,过采样
 o,overfitting,,过拟合/过配
-o,overfitting,,过拟合
 o,overcomplete,,过完备
 o,output smearing,,输出调制法
 o,output layer,,输出层
@@ -607,7 +579,6 @@ p,principle of multiple explanations,,多释原则
 p,principal component analysis,PCA,主成分分析
 p,prepruning,,预剪枝
 p,precision,,查准率/精确率
-p,precision,,查准率（预测结果是正样本的准确率）
 p,power method,,幂方法
 p,potential function,,势函数
 p,posterior probability,,后验概率
@@ -621,14 +592,12 @@ p,polynomial kernel function,,多项式核函数
 p,polynomial basis function,,多项式基函数
 p,polarity detection,,极性检测
 p,plurality voting,,相对多数投票法
-p,plug and play generative network,,即插即用生成网络
 p,plug and play generative network,PPGN,即插即用生成网络
 p,pictorial structure,,图形结构
 p,perplexity,,困惑度
 p,permutation invariant,,置换不变性
 p,performance measure,,性能度量
-p,perceptron,,感知机
-p,perceptron,,感知器
+p,perceptron,,感知器/感知机
 p,particle swarm optimization,PSO,粒子群优化算法
 p,partial derivative,,偏导数
 p,part-of-speech tagging,,词性标注
@@ -640,7 +609,7 @@ p,parameter,,参数
 p,parallel tempering,,并行回火
 p,pairwise markov property,,成对马尔可夫性
 p,pairwise,,成对型
-p,paired t-test,,成对 t 检验
+p,paired t-test,,成对 T-检验
 q,quasi-concave,,拟凹
 q,quasi newton method,,拟牛顿法
 q,quantum machine learning,,量子机器学习
@@ -649,11 +618,9 @@ q,quantum computer,,量子计算机
 q,quantized neural network,QNN,量子化神经网络
 q,quadratic programming,,二次规划
 r,rule learning,,规则学习
-r,rule engine,,规则引擎
 r,rule engine,RE,规则引擎
 r,root node,,根结点
 r,robustness,,稳健性/鲁棒性
-r,robustness,,稳健性
 r,robot,,机器人
 r,ridge regression,,岭回归
 r,reverse mode accumulation,,反向模式累加
@@ -671,21 +638,16 @@ r,representation,,表征
 r,reparametrization,,重参数化
 r,relative entropy,,相对熵
 r,reinforcement learning,RL,强化学习
-r,reinforcement learning,,强化学习
 r,regularizer,,正则化项
 r,regularization,,正则化
 r,regression,,回归
 r,reference model,,参考模型
-r,recursive neural network,,递归神经网络
-r,recurrent neural network,,循环神经网络
-r,recurrent neural network,RNN,循环神经网络
-r,rectified linear unit,RELU,线性修正单元
+r,recurrent neural network,RNN,递归神经网络/循环神经网络
 r,rectified linear unit,ReLU,线性修正单元/线性修正函数
 r,receiver operating characteristic,ROC,受试者工作特征
 r,recall,,召回率/查全率
-r,recall,,查全率（预测结果中正样本的数量占真实情况正样本的数量）
-r,re-weighting,,重赋权法
-r,re-sampling,,重采样法
+r,re-weighting,,重赋权/重赋权法
+r,re-sampling,,重采样/重采样法
 r,random walk,,随机漫步
 r,random forest algorithm,,随机森林算法
 r,radial basis function,RBF,径向基函数
@@ -695,21 +657,18 @@ s,symbolism,,符号主义
 s,symbolic learning,,符号学习
 s,surrogate function,,替代函数
 s,surrogat loss,,替代损失
-s,support vector machine（svm）,,支持向量机
 s,support vector machine,SVM,支持向量机
 s,support vector expansion,,支持向量展式
-s,supervised learning,,监督学习/有导师学习
 s,supervised learning,,监督学习
 s,subspace,,子空间
 s,subsampling,,下采样
 s,structured variational inference,,结构化变分推断
 s,structural risk minimization,SRM,结构风险最小化
-s,structural  risk,,结构风险
+s,structural risk,,结构风险
 s,stratified sampling,,分层采样
 s,stochastic neighbor embedding,,随机近邻嵌入
 s,stochastic maximum likelihood,,随机最大似然
 s,stochastic matrix,,随机矩阵
-s,stochastic gradient descent,,随机梯度下降
 s,stochastic gradient descent,SGD,随机梯度下降
 s,status feature function,,状态特征函数
 s,statistical learning,,统计学习
@@ -739,13 +698,12 @@ s,smoothness prior,,平滑先验
 s,smoothing,,平滑
 s,slowness principle,,慢性原则
 s,slack variables,,松弛变量
-s,singular value decomposition,,奇异值分解
 s,singular value decomposition,SVD,奇异值分解
 s,singular value,,奇异值
 s,simultaneous localization and mapping,SLAM,同步定位与地图构建
 s,simulated annealing,,模拟退火
 s,similarity measure,,相似度度量
-s,sigmoid function,,Sigmoid 函数/S 型函数
+s,sigmoid function,,Sigmoid 函数
 s,siamese network,,孪生网络
 s,shift invariance,,平移不变性
 s,shannon entropy,,香农熵
@@ -766,9 +724,8 @@ s,self organised map,SOM,自组织映射
 s,second-order method,,二阶方法
 s,second derivative,,二阶导数
 s,score function,,评分函数
-s,sampling,,采样
+s,sampling/sample,,采样
 s,sample space,,样本空间
-s,sample,,一个采样
 s,saliency map,,显著图
 s,saddle-free newton method,,无鞍牛顿法
 s,saddle point,,鞍点
@@ -783,23 +740,18 @@ t,triangulate,,三角形化
 t,trial-by-error,,试错法
 t,treebank,,树库
 t,transfer learning,,迁移学习/转移学习
-t,transfer learning,,迁移学习
 t,transductive learning,,直推学习
 t,training instance,,训练实例
 t,training error,,训练误差
-t,training error,,训练误差（训练集上的误差）
-t,training,,学习，训练
+t,training,,学习/训练
 t,tractable,,易处理的
 t,tokenization,,标记化/分词
-t,tokenization,,标记化
 t,time step,,时间步骤
-t,time step,,时间步
 t,time delay neural network,,时延神经网络
 t,tiled convolution,,平铺卷积
-t,threshold-moving,,阈值移动
+t,threshold-moving/threshold-moving,,阈值移动
 t,threshold logic unit,,阈值逻辑单元
 t,threshold,,阈值
-t,threshold,,阙值
 t,the least square method,,最小二乘法
 t,testing,,测试
 t,tensor processing units,TPU,张量处理单元
@@ -807,14 +759,11 @@ t,tensor,,张量
 t,tempered transition,,回火转移
 t,tangent prop,,正切传播
 t,tangent plane,,切平面
-t,t-distribution stochastic neighbour embedding,T-SNE,T分布随机近邻嵌入
-t,t-distribution stochastic neighbour embedding,t-SNE,T-分布随机近邻嵌入
+t,t-distribution stochastic neighbour embedding,T-SNE,T-分布随机近邻嵌入
 u,upsampling,,上采样
 u,upper confidence bounds,,上置信界限
-u,unsupervised  learning,,无监督学习/无导师学习
 u,unsupervised learning,,无监督学习
 u,unsupervised layer-wise training,,无监督逐层训练
-u,unsupervised  learning,,无监督学习/无导师学习
 u,unshared convolution,,非共享卷积
 u,unprojection,,反投影
 u,univariate decision tree,,单变量决策树
@@ -829,8 +778,7 @@ u,understandability,,可理解性
 u,undersampling,,欠采样
 u,underfitting,,欠拟合/欠配
 u,underestimation,,欠估计
-v,von neumann architecture,,冯 · 诺伊曼架构
-v,von neumann architecture,,冯·诺伊曼架构/结构
+v,von neumann architecture,,冯·诺伊曼架构/冯·诺伊曼结构
 v,viterbi algorithm,,维特比算法
 v,virtual adversarial example,,虚拟对抗样本
 v,version space,,版本空间
@@ -840,19 +788,14 @@ v,variational free energy,,变分自由能
 v,variational derivative,,变分导数
 v,vapnik–chervonenkis theory,VC Theory,万普尼克-泽范兰杰斯理论
 v,vanishing gradient problem,,梯度消失问题
-w,word sense disambiguation,,词义消歧
 w,word sense disambiguation,WSD,词义消歧
 w,word embedding,,词嵌入
 w,within-class scatter matrix,,类内散度矩阵
 w,weighted voting,,加权投票法
 w,weight sharing,,权共享
 w,weight decaying,,权值衰减
-w,weight,,权重
 w,weight,W,权重
 w,weak learner,,弱学习器
 w,wasserstein gan,WGAN,Wasserstein生成对抗网络
-w,wasserstein gan,WGAN,
-z,zero-shot learning,,零次学习
-z,zero-shot learning,ZSL,零次学习
-z,zero-data learning,,零数据学习
+z,zero-shot learning,ZSL,零次学习/零数据学习
 z,zero mean,,零均值
