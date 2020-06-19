@@ -29,6 +29,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import constant as C, config as CONF
 import log, logging as lg
+from pathlib import Path
 import unittest
 from copy import deepcopy
 from datetime import datetime
@@ -94,6 +95,13 @@ class TestTranslation(unittest.TestCase):
         # self.log.info(term.term)
         self.assertEqual(type(term.term), pd.DataFrame)
 
-
+    def test_parse_one(self):
+        # python -m unittest test.test_translation.TestTranslation.test_parse_one
+        downloaded = Path(r'C:\projects\personal\TranslationPipe\download\20200618190901027481ai-and-neuroscience-virtuous-circle.html')
+        self.log.info(downloaded)
+        term = Terminology(self.term_file)
+        # self.log.info(f'\n{term.term.head(10)}',)
+        tran = Standardizor(self.standardized_path, term)
+        translated_file = tran.parse_one(downloaded, from_lang='en', to_lang='cn_zh')
 if __name__ == '__main__':
     unittest.main()

@@ -63,37 +63,29 @@ class Terminology(IContainer):
         container of terminology dataframe
     """
 
-    COL_NAME = [C.LANG_EN_CAP, C.LANG_EN, C.LANG_EN_ABBR, C.LANG_CN_ZH]
-    VAL_SEP = '/'
-    
-
-    def parse(self, val:Any) -> Any:
-        r"""Convert value to 1. string type; 2. List if string is with VAL_SEP; 3. NaN like value to "".
-        """
-        str_val = str(val)
-        temp = str_val.split(self.VAL_SEP)
-        return temp if len(temp) > 1 else str_val
-
 
     def __init__(self, terminology_file:Path=None):
         if not terminology_file.is_file():
             raise ValueError('terminology_file arguement has to be file')
         if terminology_file.suffix != '.csv':
             raise ValueError(f'terminology_file arguement ({terminology_file.suffix}) has to be "csv" suffix file')
+
+        def parse(val:Any) -> Any:
+            r"""Convert value to 1. string type; 2. List if string is with VAL_SEP; 3. NaN like value to "".
+            """
+            str_val = str(val)
+            temp = str_val.split(self.VAL_SEP)
+            return temp if len(temp) > 1 else str_val
+
         super().__init__()
+        self.COL_NAME = [C.LANG_EN_CAP, C.LANG_EN, C.LANG_EN_ABBR, C.LANG_CN_ZH]
+        self.VAL_SEP = '/'
         self.COL_CONV = {
-            C.LANG_EN_CAP: Terminology.parse, C.LANG_EN: Terminology.parse, C.LANG_EN_ABBR: Terminology.parse, C.LANG_CN_ZH: Terminology.parse
+            C.LANG_EN_CAP: parse, C.LANG_EN: parse, C.LANG_EN_ABBR: parse, C.LANG_CN_ZH: parse
         }
         self.log = l.getLogger(__name__)
-        self._root = terminology_file
-        self.term = pd.read_csv(terminology_file, names=self.COL_NAME, converters=self.COL_CONV, encoding='utf-8') #dtype=self.COL_TYPE,
-
-        self.term
-
-
-    # def _to_list(self, df:pd.DataFrame) -> None:
-    #     for index, row in enumerate(df.itertuples(index=True)):
-    #         for col_name in C.COL_SPLIT:
-    #             col_value = row[col_name].split(self.VAL_SEP) #if isinstance(row[col_name], str) else ''
-    #             df.loc[index, col_value] = col_value
-
+        self.terminology_file = terminology_file
+        self.term = pd.read_csv(str(terminology_file), names=self.COL_NAME, converters=self.COL_CONV, encoding='utf-8', header=0)
+        # self.term.sort_values(by=C.LANG_EN)#, ascending=[True, False], inplace=True, axis=1)
+        # self.term.sort_values(by=[C.LANG_EN], ascending=[False], inplace=True, axis=1)
+        self.term = self.term.drop([C.LANG_EN_CAP], axis=1)

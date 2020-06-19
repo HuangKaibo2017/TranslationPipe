@@ -71,13 +71,13 @@ class Standardizor(object):
             return
         
 
-    def __construct_term_pair(self, term:Terminology, from_lang:str, to_lang:str) -> List[List, AnyStr, pd.DataFrame]:
+    def __construct_term_pair(self, term:Terminology, from_lang:str, to_lang:str) -> List[Any]:
         r"""Construct Terminology pair. The structure is 
         {
             'key': # The key is constructd by '-'.join(cols)
                    # The cols is constructd by [from_languages, to_language]
             [
-                from_languages, to_language, {from_lang_value: [complied_RE, [translation values]]}
+                from_languages, to_languages, {from_lang_value: [complied_RE, [translation values]]}
             ]
         }
 
@@ -92,7 +92,8 @@ class Standardizor(object):
 
         returns
         -------
-        return a Dict.
+        return a List of pair info. Which is: [[from_languages], [to_languages], search]
+            search is Dict, as {val_of_lang: [compiled_re, [translation_val]]}
         """
         to_langs = []
         for col in term.COL_NAME:
@@ -101,27 +102,31 @@ class Standardizor(object):
         if len(to_langs) < 1:
             raise ValueError(f'Value of to_lang, "{to_lang}", is not supported. Supported "{term.COL_NAME}"')
         from_langs = []
-        for col in term.COL_NAME:
+        for col in term.term.columns:
             if col.startswith(from_lang):
                 from_langs.append(col)
         if len(from_langs) < 1:
             raise ValueError(f'Value of from_lang, "{from_lang}", is not supported. Supported "{term.COL_NAME}"')
-        cols = deepcopy(from_langs).extend(to_langs)
+        cols = from_langs + to_langs
+        self.log.info(f"cols:{cols}-from_langs:{from_langs}-to_langs:{to_langs}")
         key = '-'.join(cols)
+        if key in self.term_pair:
+            return self.term_pair[key]
         df: pd.DataFrame = term.term[cols]
         search = dict() # search pair. key is one of the from languagues, values are compose by
                         # [compiled re,  [translation list]]
+        INDEX, FROM_LANG, ABBR, TO_LAND = 0, 1, 2, 3
         for index, row in enumerate(df.itertuples(index=True)):
             for frm_lang in from_langs:
-                frm_keys = row[frm_lang]
+                frm_keys = row[FROM_LANG]
                 # search key type could be single value, which is string; or List, whichs is list of string.
                 if isinstance(frm_keys, str):
                     p = re.compile(r"[^\+\=\-\</\w]{1}" + frm_keys + r"[^\+\>\-\=\w]{1}", flags=re.IGNORECASE)
-                    search[frm_keys] = [p, row[to_lang]]
+                    search[frm_keys] = [p, row[TO_LAND]]
                 elif isinstance(frm_keys, list):
                     for k in frm_keys:
                         p = re.compile(r"[^\+\=\-\</\w]{1}" + k + r"[^\+\>\-\=\w]{1}", flags=re.IGNORECASE)
-                        search[k] = [p, chain.from_iterable(row[to_langs])]
+                        search[k] = [p, chain.from_iterable(row[TO_LAND])]
         self.term_pair[key] = [from_langs, to_langs, search]
         return self.term_pair[key]
 
@@ -146,15 +151,42 @@ class Standardizor(object):
         """
         before = datetime.now()
         content: str = None
-        term = term if term is None else self.term
-        if term is None:
+        term = term if term is not None else self.term
+        if term is None :
             raise ValueError('The term arguement has to be set, either set by parse_one or constructor')
         with open(downloaded, "r", encoding=encoding) as f:
             content = f.read()
-        std_name: Path = None
+
+        pairs:List[List, List, Dict] = self.__construct_term_pair(term, from_lang, to_lang)
+        pair:Dict = pairs[2] # key is val_of_from_lang, val is [compiled_re, translated_words]
+        translated = {}
+        for k, v in pair.items():
+            for m in v[0].finditer(content):
+                k_index = m.start() + 1 # m.start() is offset from 0 of content of html
+                if k_index not in translated:
+                    translated[k_index] = [k, v[1]] # v[1] is [translated_words]
+        ordered_key = sorted(translated.keys())
+        translated_file = self.std_path.joinpath(downloaded.name)
+        with open(translated_file, "w+", encoding=encoding) as translated_f:
+            start_i = 0
+            key_index = 0
+            key_len = len(ordered_key)
+            while key_index < key_len:
+                order_index = ordered_key[key_index]
+                std_k = translated[order_index]
+                k_len = len(std_k[0])
+                same_len_as_before = order_index + k_len
+                if start_i == same_len_as_before:
+                    key_index += 1
+                    continue
+                translated_f.write(content[start_i:order_index + k_len])
+                translated_f.write("[翻译：{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
+                start_i = order_index + k_len
+                key_index += 1
+            translated_f.flush()
         after = datetime.now()
-        self.log.info(f"Standardized with [{after-before}]‘{std_name}’")
-        return std_name
+        self.log.info(f"Standardized with [{after-before}]‘{translated_file}’")
+        return translated_file
 
 
     def parse_single(self, download:Path, word_pair:dict, ext_properties:dict) -> Path:
