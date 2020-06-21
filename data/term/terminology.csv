@@ -513,6 +513,7 @@ m,main diagonal,,主对角线
 m,macron-r,,宏查全率
 m,macron-p,,宏查准率
 m,machine translation,MT,机器翻译
+m,machine learning,ML,机器学习
 n,numerical optimization,,数值优化
 n,numerical attribute,,数值属性
 n,nuclear norm,,核范数
@@ -533,6 +534,7 @@ n,neuromorphic computing,,神经形态计算
 n,neural turing machine,NTM,神经图灵机
 n,neural networks,,神经网络
 n,neural machine translation,NMT,神经机器翻译
+n,network architecture,,网络架构
 n,neighbourhood component analysis,NCA,近邻成分分析
 n,negative semideﬁnite,,半负定
 n,negative log likelihood,NLL,负对数似然
@@ -794,7 +796,7 @@ w,within-class scatter matrix,,类内散度矩阵
 w,weighted voting,,加权投票法
 w,weight sharing,,权共享
 w,weight decaying,,权值衰减
-w,weight,W,权重
+w,weight,,权重
 w,weak learner,,弱学习器
 w,wasserstein gan,WGAN,Wasserstein生成对抗网络
 z,zero-shot learning,ZSL,零次学习/零数据学习

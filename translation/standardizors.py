@@ -28,7 +28,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 import constant as C, log, logging as l, os, re
-from typing import Any, AnyStr, List, Dict
+from typing import Any, AnyStr, List, Dict, Set
 from itertools import chain
 from pathlib import Path
 from datetime import datetime
@@ -67,8 +67,6 @@ class Standardizor(object):
         self.std_path:Path = std_path
         self.term: Terminology = term
         self.term_pair = dict()
-        if self.term is None:
-            return
         
 
     def __construct_term_pair(self, term:Terminology, from_lang:str, to_lang:str) -> List[Any]:
@@ -107,26 +105,37 @@ class Standardizor(object):
                 from_langs.append(col)
         if len(from_langs) < 1:
             raise ValueError(f'Value of from_lang, "{from_lang}", is not supported. Supported "{term.COL_NAME}"')
+
+        def flat_list(val:Any, ret:Set) -> None:
+            if isinstance(val, list):
+                for i in val:
+                    flat_list(i, ret)
+            else:
+                ret.add(val)
+
         cols = from_langs + to_langs
-        self.log.info(f"cols:{cols}-from_langs:{from_langs}-to_langs:{to_langs}")
         key = '-'.join(cols)
         if key in self.term_pair:
             return self.term_pair[key]
         df: pd.DataFrame = term.term[cols]
         search = dict() # search pair. key is one of the from languagues, values are compose by
                         # [compiled re,  [translation list]]
-        INDEX, FROM_LANG, ABBR, TO_LAND = 0, 1, 2, 3
-        for index, row in enumerate(df.itertuples(index=True)):
+
+        for row in df.itertuples(index=True):
             for frm_lang in from_langs:
-                frm_keys = row[FROM_LANG]
+                frm_keys = row[term.TERM_INDEX[frm_lang]] # TERM_INDEX is column index. frm_lang is one of from_langs
                 # search key type could be single value, which is string; or List, whichs is list of string.
+                val = set()
+                flat_list([row[term.TERM_INDEX[i]] for i in to_langs], val) # to_lang may has multi-columns
                 if isinstance(frm_keys, str):
+                    if len(frm_keys) < 1: continue
                     p = re.compile(r"[^\+\=\-\</\w]{1}" + frm_keys + r"[^\+\>\-\=\w]{1}", flags=re.IGNORECASE)
-                    search[frm_keys] = [p, row[TO_LAND]]
+                    search[frm_keys] = [p, val]
                 elif isinstance(frm_keys, list):
                     for k in frm_keys:
+                        if len(k) < 1: continue
                         p = re.compile(r"[^\+\=\-\</\w]{1}" + k + r"[^\+\>\-\=\w]{1}", flags=re.IGNORECASE)
-                        search[k] = [p, chain.from_iterable(row[TO_LAND])]
+                        search[k] = [p, val]
         self.term_pair[key] = [from_langs, to_langs, search]
         return self.term_pair[key]
 
@@ -180,62 +189,10 @@ class Standardizor(object):
                     key_index += 1
                     continue
                 translated_f.write(content[start_i:order_index + k_len])
-                translated_f.write("[翻译：{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
+                translated_f.write("[TERM:{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
                 start_i = order_index + k_len
                 key_index += 1
             translated_f.flush()
         after = datetime.now()
         self.log.info(f"Standardized with [{after-before}]‘{translated_file}’")
         return translated_file
-
-
-    def parse_single(self, download:Path, word_pair:dict, ext_properties:dict) -> Path:
-        before = datetime.now()
-        terms = dict()
-        content: str = None
-        with open(download, "r", encoding="utf-8") as f:
-            content = f.read()
-        for index, std_dict in word_pair.items():
-            ext_int = 0
-            if index in ext_properties:
-                ext_int = re.IGNORECASE if ext_properties[int(index)] == "IGNORECASE" else 0
-            for std_k, std_v in std_dict.items():
-                p = re.compile(r"[^\+\=\-\</\w]{1}" + std_k + r"[^\+\>\-\=\w]{1}", flags=ext_int)
-                for m in p.finditer(content):
-                    k_index = m.start() + 1
-                    if k_index not in terms:
-                        terms[k_index] = [std_k, std_v]
-        ordered_key = sorted(terms.keys())
-        std_f_name = self.std_path.joinpath(download.name)
-        with open(std_f_name, "w+", encoding="utf-8") as s_f:
-            start_i = 0
-            key_index = 0
-            key_len = len(ordered_key)
-            while key_index < key_len:
-                order_index = ordered_key[key_index]
-                std_k = terms[order_index]
-                k_len = len(std_k[0])
-                same_len_as_before = order_index + k_len
-                if start_i == same_len_as_before:
-                    key_index += 1
-                    continue
-                s_f.write(content[start_i:order_index + k_len])
-                s_f.write("[翻译：{}]".format(",".join(std_k[1]) if isinstance(std_k[1], list) else std_k[1]))
-                start_i = order_index + k_len
-                key_index += 1
-            s_f.flush()
-        after = datetime.now()
-        self.log.info(f"Standardized with [{after-before}]‘{std_f_name}’")
-        return std_f_name
-
-
-    def parse(self, files:dict, term:Terminology):
-        replace = dict()
-        for k, v in files.items():
-            if C.REQ_STANDARDIZED in v and len(v[C.REQ_STANDARDIZED]) > 0:
-                self.log.info(f"**omitted. uri:'{k}' is standardized, '{v[C.REQ_STANDARDIZED]}'")
-                continue
-            if C.REQ_DOWNLOAD in v and len(v[C.REQ_DOWNLOAD]) > 0:
-                word_pair = term.get_word_pair(v[C.REQ_LANG_SRC], v[C.REQ_LANG_DST])
-                std_f_name = self.parse_single(v[C.REQ_DOWNLOAD], word_pair, term.ext_property)
-                v[C.REQ_STANDARDIZED] = std_f_name

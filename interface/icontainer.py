@@ -27,15 +27,14 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-from abc import abstractclassmethod
 class IContainer(object):
     def __init__(self):
         pass
 
-    @abstractclassmethod
-    def __iter__(self):
-        pass
 
-    @abstractclassmethod
+    def __iter__(self):
+        raise NotImplementedError()
+
+
     def __getitem__(self, item):
-        pass
+        raise NotImplementedError()

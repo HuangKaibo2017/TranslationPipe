@@ -40,19 +40,9 @@ class Terminology(IContainer):
 
     parameters
     ----------
-    source_type: str
-        Type of source. It could be TYPE_CSV_FILE, TYPE_CSV_STR or TYPE_XLSX_FILE. Only TYPE_CSV_FILE implemented.
-    term_root_path: str
-        The terminology file root path. If it is a path with file name, only the file is to be used. If it is a 
+    terminology_file: Path
+        The terminology file full path. If it is a path with file name, only the file is to be used. If it is a 
         directry, all files of the directry and sub-directry are loaded.
-    from_cols: List
-        The columns to match articles words. Give English articles scenario, from_cols could be value of ['en', 'en_abbr']
-    to_cols: List
-        The columns to match translation option words. Give English->Chinese scenario, to_cols could be value of ['en', 'en_abbr']
-
-    Terminology csv file columns description
-    column name structure is <language_code>
-        language_code: like, en, cn, cn_zh, en_abbr
 
     methods
     -------
@@ -61,6 +51,9 @@ class Terminology(IContainer):
     ----------
     term: pd.DataFrame
         container of terminology dataframe
+
+    terminology_file: Path
+        The terminology file full path
     """
 
 
@@ -79,6 +72,9 @@ class Terminology(IContainer):
 
         super().__init__()
         self.COL_NAME = [C.LANG_EN_CAP, C.LANG_EN, C.LANG_EN_ABBR, C.LANG_CN_ZH]
+        self.TERM_INDEX = {
+            'INDEX': 0, C.LANG_EN: 1, C.LANG_EN_ABBR: 2, C.LANG_CN_ZH: 3
+        }
         self.VAL_SEP = '/'
         self.COL_CONV = {
             C.LANG_EN_CAP: parse, C.LANG_EN: parse, C.LANG_EN_ABBR: parse, C.LANG_CN_ZH: parse

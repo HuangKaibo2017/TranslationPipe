@@ -36,17 +36,14 @@ __all__ = [
 ]
 
 
-g_root = None
-
-
 def is_exe_mode():
     return getattr(sys, 'frozen', False)
 
 
+g_root = None
+
 def get_root():
-    """
-    return pathlib.Path object, which represents the root path either exe file of parent folder of this file.
-    :return:
+    r"""return pathlib.Path object, which represents the root path either exe file of parent folder of this file.
     """
     global g_root
     if not g_root:

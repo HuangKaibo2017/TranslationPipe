@@ -70,23 +70,18 @@ class TestTranslation(unittest.TestCase):
     # @unittest.skip("disable for debug")
     def test_spider_agent(self):
         # python -m unittest test.test_translation.TestTranslation.test_spider_agent
-        urls = {"https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/":{C.REQ_DOWNLOAD:"", C.REQ_STANDARDIZED:""}}
+        urls = {"https://github.com/ZuzooVn/machine-learning-for-software-engineers":{C.REQ_DOWNLOAD:"", C.REQ_STANDARDIZED:""}}
         sa = Spider(self.download_path)
         sa.start(urls)
 
 
     def test_standardized(self):
-        # python -m unittest test.test_translation.TestTranslation.test_spider_agent
-        file = {
-            "https://deepmind.com/blog/ai-and-neuroscience-virtuous-circle/": 
-            {
-                C.DOWNLOAD:r"C:\projects\personal\TranslationPipe\download\20170828115408438438.html", C.REQ_STANDARDIZED:""
-            }
-        }
+        # python -m unittest test.test_translation.TestTranslation.test_standardized
+        downloaded_file = Path(r"C:\projects\personal\TranslationPipe\download\20200620165458597707machine-learning-for-software-engineers.html")
         term = Terminology(self.term_file)
-        tran = Standardizor(self.standardized_path)
-        tran.parse(file, term)
-        self.log.info(file)
+        tran = Standardizor(self.standardized_path, term)
+        translated_file = tran.parse_one(downloaded=downloaded_file, term=term)
+        self.log.info(translated_file)
 
     def test_terminology(self):
         # python -m unittest test.test_translation.TestTranslation.test_terminology
@@ -103,5 +98,7 @@ class TestTranslation(unittest.TestCase):
         # self.log.info(f'\n{term.term.head(10)}',)
         tran = Standardizor(self.standardized_path, term)
         translated_file = tran.parse_one(downloaded, from_lang='en', to_lang='cn_zh')
+
+        
 if __name__ == '__main__':
     unittest.main()

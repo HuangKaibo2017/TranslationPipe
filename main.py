@@ -27,7 +27,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 
-import constant as C
+from typing import List, Any, AnyStr, Dict
+import constant as C, config as CONF
 import log, logging as l, sys
 from pathlib import Path
 from container.term import Terminology
@@ -46,19 +47,19 @@ lg = l.getLogger(__name__)
 
 if __name__ == "__main__":
     root = get_root()
-    folder_requirement = root.joinpath(C.DATA, C.REQUIREMENT)
+    folder_requirement = root.joinpath(CONF.DIR_DATA, CONF.DIR_REQUIREMENT)
     if not folder_requirement.exists():
         raise ValueError(f"requirement folder '{folder_requirement}' is not exists.")
-    folder_term = root.joinpath(C.DATA, C.TERMNINOLOGY_FILE)
+    folder_term = root.joinpath(CONF.DIR_DATA, CONF.DIR_TERM, CONF.TERMNINOLOGY_FILE)
     if not folder_term.exists():
         raise ValueError(f"Terminology File '{folder_term}' is not exists.")
-    folder_download = root.joinpath(C.DATA, C.REQ_DOWNLOAD)
+    folder_download = root.joinpath(CONF.DIR_DATA, CONF.DIR_DOWNLOAD)
     if not folder_download.exists():
         folder_download.mkdir(parents=True, exist_ok=True)
-    folder_standardized = root.joinpath(C.DATA, C.REQ_STANDARDIZED)
+    folder_standardized = root.joinpath(CONF.DIR_DATA, CONF.DIR_STANDARDIZED)
     if not folder_standardized.exists():
         folder_standardized.mkdir(parents=True, exist_ok=True)
-    folder_temp = root.joinpath(C.DATA, C.FOLDER_TEMP)
+    folder_temp = root.joinpath(CONF.DIR_DATA, CONF.DIR_TEMP)
     if not folder_temp.exists():
         folder_temp.mkdir(parents=True, exist_ok=True)
     lg.info(
@@ -67,26 +68,37 @@ if __name__ == "__main__":
     )
 
     spider = Spider(folder_download)
-    term = Terminology(folder_term, C.TYPE_FILE_CSV)
-    std = Standardizor(folder_standardized)
+    term = Terminology(folder_term)
+    std = Standardizor(folder_standardized, term)
 
-    tasks: pd.DataFrame = load_task(folder_requirement)
-    for index, row in enumerate(tasks.itertuples(index=True)):
-        uri = get_val(row.uri)
-        if uri is None or len(uri) < 2:
-            continue
-        src_language = get_val(row.src_language)
-        dst_language = get_val(row.dst_language)
-        download = get_val(row.download)
-        standardized = get_val(row.standardized)
-        encoding = get_val(row.encoding)
-        if not download and len(download) < 1:
-            download, encoding = spider.start_single(row.uri, Path.joinpath(folder_download, download))
-            tasks.set_value(index, C.REQ_DOWNLOAD, download.name)
-            tasks.set_value(index, C.REQ_ENCODING, encoding)
-        else:
-            download = folder_download.joinpath(download)
-        if not standardized and len(standardized) < 1:
-            word_pair = term.get_word_pair(src_language, dst_language)
-            standardized = std.parse_single(download, word_pair, term.ext_property)
-            tasks.set_value(index, C.REQ_STANDARDIZED, standardized.name)
+    tasks: List = load_task(folder_requirement)
+    for task in tasks:
+        try:
+            pth:Path = task[0]
+            task_content:pd.DataFrame = task[1]
+            for index, row in enumerate(task_content.itertuples(index=True)):
+                uri = get_val(row.uri)
+                if uri is None or len(uri) < 2:
+                    continue
+                src_language = get_val(row.src_language)
+                dst_language = get_val(row.dst_language)
+                downloaded = get_val(row.download)
+                standardized = get_val(row.standardized)
+                encoding = get_val(row.encoding)
+                if not downloaded and len(downloaded) < 1:
+                    downloaded, encoding = spider.start_single(row.uri, Path.joinpath(folder_download, downloaded))
+                    task_content.loc[index, C.REQ_DOWNLOAD] = downloaded.name
+                    task_content.loc[index, C.REQ_ENCODING] = encoding
+                else:
+                    downloaded = folder_download.joinpath(downloaded)
+                if not standardized and len(standardized) < 1:
+                    standardized = std.parse_one(downloaded=downloaded, from_lang=src_language, to_lang=dst_language, encoding=encoding)
+                    task_content.loc[index, C.REQ_STANDARDIZED] = standardized.name
+
+            ew = ExcelWriter(str(pth))
+            task_content.to_excel(ew,index=False,encoding='utf-8')
+            ew.save()
+            ew.close()
+        except:
+            exc_type, exc_val, _ = sys.exc_info()
+            lg.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
