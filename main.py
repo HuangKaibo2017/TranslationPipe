@@ -30,6 +30,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import List, Any, AnyStr, Dict
 import constant as C, config as CONF
 import log, logging as l, sys
+import requests as r
 from pathlib import Path
 from container.term import Terminology
 from translation.standardizors import Standardizor
@@ -63,7 +64,7 @@ if __name__ == "__main__":
     if not folder_temp.exists():
         folder_temp.mkdir(parents=True, exist_ok=True)
     lg.info(
-        f"root:{root}.\nfolder terminology:{folder_term}.\nfolder requirement:{folder_requirement}.\n"
+        f"\nroot:{root}.\nfolder terminology:{folder_term}.\nfolder requirement:{folder_requirement}.\n"
         + f"folder download:{folder_download}.\nfolder standardized:{folder_standardized}.\n"
     )
 
@@ -73,13 +74,15 @@ if __name__ == "__main__":
 
     tasks: List = load_task(folder_requirement)
     for task in tasks:
-        try:
-            pth:Path = task[0]
-            task_content:pd.DataFrame = task[1]
-            for index, row in enumerate(task_content.itertuples(index=True)):
+        pth:Path = task[0]
+        task_content:pd.DataFrame = task[1]
+        lg.info(f'** Processing file:{pth}')
+        for index, row in enumerate(task_content.itertuples(index=True)):
+            try:
                 uri = get_val(row.uri)
                 if uri is None or len(uri) < 2:
                     continue
+                lg.info(f'** Processing [{index}]{uri}')
                 src_language = get_val(row.src_language)
                 dst_language = get_val(row.dst_language)
                 downloaded = get_val(row.download)
@@ -94,11 +97,15 @@ if __name__ == "__main__":
                 if not standardized and len(standardized) < 1:
                     standardized = std.parse_one(downloaded=downloaded, from_lang=src_language, to_lang=dst_language, encoding=encoding)
                     task_content.loc[index, C.REQ_STANDARDIZED] = standardized.name
-
-            ew = ExcelWriter(str(pth))
-            task_content.to_excel(ew,index=False,encoding='utf-8')
-            ew.save()
-            ew.close()
-        except:
-            exc_type, exc_val, _ = sys.exc_info()
-            lg.error("[{}]{}.".format(exc_type, exc_val), exc_info=True)
+            except Exception as e:
+                exc_type, exc_val, _ = sys.exc_info()
+                if type(e) == r.exceptions.ConnectionError:
+                    lg.error(f'{dir(e)}')
+                    lg.error(f'errno:{e.errno} - strerror:{e.strerror}')
+                    task_content.loc[index, C.REQ_ERROR] = f'{type(e)}:{e.errno}:{e.strerror}'
+                lg.error(f"Exception occurred: {exc_type}\n", exc_info=True)
+        ew = ExcelWriter(str(pth))
+        task_content.to_excel(ew,index=False,encoding='utf-8')
+        ew.save()
+        ew.close()
+        lg.info(f'** finished file:{pth}')

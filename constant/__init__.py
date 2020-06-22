@@ -34,6 +34,7 @@ REQ_URI = "uri"
 REQ_DOWNLOAD = "download"
 REQ_STANDARDIZED = "standardized"
 REQ_ENCODING = "encoding"
+REQ_ERROR = 'error'
 
 # the columns name of terminology.csv
 LANG_EN_CAP = 'en_cap'
